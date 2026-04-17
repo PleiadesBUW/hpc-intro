@@ -167,12 +167,36 @@ where a particular piece of software is stored.
 ```
 
 
-``` error
-Error in `snippets()`:
-! Snippet not found: modules/missing-python.Rmd
-Main: /home/runner/work/hpc-intro/hpc-intro/site/built/files/customization/BUW_PLEIADES_slurm/snippets/modules/missing-python.Rmd
-Fallback: /home/runner/work/hpc-intro/hpc-intro/site/built/files/customization/BUW_PLEIADES_slurm/snippets/modules/missing-python.Rmd
+If the `python3` command was unavailable, we would see output like
+
+```output
+/usr/bin/which: no python3 in (/cvmfs/pilot.eessi-hpc.org/2020.12/compat/linux/x86_64/usr/bin:/opt/software/slurm/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/opt/puppetlabs/bin:/home/user/.local/bin:/home/user/bin)
 ```
+
+Note that this wall of text is really a list, with values separated
+by the `:` character. The output is telling us that the `which` command
+searched the following directories for `python3`, without success:
+
+```output
+/cvmfs/pilot.eessi-hpc.org/2020.12/compat/linux/x86_64/usr/bin
+/opt/software/slurm/bin
+/usr/local/bin
+/usr/bin
+/usr/local/sbin
+/usr/sbin
+/opt/puppetlabs/bin
+/home/user/.local/bin
+/home/user/bin
+```
+
+However, in our case we do have an existing `python3` available so we see
+
+```output
+/cvmfs/pilot.eessi-hpc.org/2020.12/compat/linux/x86_64/usr/bin/python3
+```
+
+We need a different Python than the system provided one though, so let us load
+a module to access it.
 
 We can load the `python3` command with `module load`:
 
@@ -208,11 +232,24 @@ ran the `module load` command, it added a directory to the beginning of our
 `$PATH` -- or "prepended to PATH". Let's examine what's there:
 
 
-``` error
-Error in `snippets()`:
-! Snippet not found: modules/python-executable-dir.Rmd
-Main: /home/runner/work/hpc-intro/hpc-intro/site/built/files/customization/BUW_PLEIADES_slurm/snippets/modules/python-executable-dir.Rmd
-Fallback: /home/runner/work/hpc-intro/hpc-intro/site/built/files/customization/BUW_PLEIADES_slurm/snippets/modules/python-executable-dir.Rmd
+```bash
+[user@fugg1 ~]$ ls /cvmfs/pilot.eessi-hpc.org/2020.12/software/x86_64/amd/zen2/software/Python/3.x.y-GCCcore-x.y.z/bin
+```
+
+```output
+2to3              nosetests-3.8  python                 rst2s5.py
+2to3-3.8          pasteurize     python3                rst2xetex.py
+chardetect        pbr            python3.8              rst2xml.py
+cygdb             pip            python3.8-config       rstpep2html.py
+cython            pip3           python3-config         runxlrd.py
+cythonize         pip3.8         rst2html4.py           sphinx-apidoc
+easy_install      pybabel        rst2html5.py           sphinx-autogen
+easy_install-3.8  __pycache__    rst2html.py            sphinx-build
+futurize          pydoc3         rst2latex.py           sphinx-quickstart
+idle3             pydoc3.8       rst2man.py             tabulate
+idle3.8           pygmentize     rst2odt_prepstyles.py  virtualenv
+netaddr           pytest         rst2odt.py             wheel
+nosetests         py.test        rst2pseudoxml.py
 ```
 
 Taking this to its conclusion, `module load` will add software to your `$PATH`.
