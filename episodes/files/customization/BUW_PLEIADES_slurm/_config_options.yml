@@ -22,7 +22,7 @@ remote:
   host: "fugg1"
   node: "fugg11"
   location: "pleiades.uni-wuppertal.de"
-  homedir: "/home"
+  homedir: "/common/home"
   user: "user"
   module_python3: "Python"
   prompt: "[user@fugg1 ~]$"
