@@ -1,0 +1,8 @@
+```output
+JobID           JobName  Partition    Account  AllocCPUS      State ExitCode 
+------------ ---------- ---------- ---------- ---------- ---------- -------- 
+19526917     interacti+     normal       whep          0 CANCELLED+      0:0 
+19526933     interacti+     normal       whep          0 CANCELLED+      0:0 
+19526967     interacti+     normal       whep          1  COMPLETED      0:0 
+19526967.ex+     extern                  whep          1  COMPLETED      0:0
+```

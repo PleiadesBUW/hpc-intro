@@ -1,0 +1,68 @@
+# ---------------------------------------------------------------
+# PLEIADES Cluster @ Bergische Universität Wuppertal (BUW)
+# ---------------------------------------------------------------
+#
+# This is a customization for Scientific Computing Center PLEIADES at BUW.
+#
+# This is a production cluster.
+#
+# Compute responsibly.
+---
+
+snippets: "BUW_PLEIADES_slurm"
+
+local:
+  prompt: "[you@laptop:~]$"
+  shebang: "#!/bin/bash"
+
+remote:
+  name: "PLEIADES"
+  login: "fugg1.pleiades.uni-wuppertal.de"
+  portal: ""
+  host: "fugg1"
+  node: "fugg11"
+  location: "pleiades.uni-wuppertal.de"
+  homedir: "/home"
+  user: "user"
+  module_python3: "Python"
+  prompt: "[user@fugg1 ~]$"
+  shebang: "#!/bin/bash"
+  modules:
+    python: "Python"
+  quota: "beegfs-ctl --getquota --uid $USER"
+
+
+sched:
+  name: "Slurm"
+  submit:
+    name: "sbatch"
+    options: ""
+  queue:
+    debug: "wn21268"
+    testing: "short"
+  status: "squeue"
+  flag:
+    user: "-u $USER"
+    interactive: ""
+    histdetail: "-l -j"
+    name: "-J"
+    time: "-t"
+    queue: "-p"
+  del: "scancel"
+  interactive: "srun"
+  info: "sinfo"
+  comment: "#SBATCH"
+  hist: "sacct -u $USER"
+  hist_filter: ""
+
+episode_order:
+  - 10-hpc-intro
+  - 11-connecting
+  - 12-cluster
+  - 13-scheduler
+  - 14-environment-variables
+  - 15-modules
+  - 16-transferring-files
+  - 17-parallel
+  - 18-resources
+  - 19-responsibility

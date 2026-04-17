@@ -2,6 +2,10 @@
 site: sandpaper::sandpaper_site
 ---
 
+>
+> **Note:** This page is Work-in-progess for Bergische Universität Wuppertal PLEIADES Cluster.
+>
+
 This workshop is an introduction to using high-performance computing systems
 effectively. We can't cover every case or give an exhaustive course on parallel
 programming in just two days' teaching time. Instead, this workshop is intended

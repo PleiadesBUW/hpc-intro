@@ -1,0 +1,8 @@
+::: callout
+
+To get to know the architecture and compare them: lscpu
+
+- on login node and
+- compute node
+
+:::
