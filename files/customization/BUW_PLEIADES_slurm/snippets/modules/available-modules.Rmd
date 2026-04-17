@@ -1,0 +1,59 @@
+```bash
+`r config$remote$prompt` module avail | less
+```
+
+```output
+
+------------------------------------ /beegfs/Tools/easybuild/meta-module ------------------------------------
+   2019b-rpath      2021a-norpath    2021a        2022a        2023a
+   2020b-norpath    2021a-rpath      2021a_AL9    2022a_AL9    2025
+
+-------------------------------------- /opt/lmod/lmod/modulefiles/Core --------------------------------------
+   lmod    settarg
+
+----------------- This is a list of module extensions "module --nx avail ..." to not show.
+ -----------------
+    ADGofTest                         (E)     flit                          (E)
+    AICcmodavg                        (E)     flit-scm                      (E)
+    AMAPVox                           (E)     flit_core                     (E)
+    AUC                               (E)     flit_scm                      (E)
+    AlgDesign                         (E)     fma                           (E)
+    Algorithm::Dependency             (E)     fmri                          (E)
+    Algorithm::Diff                   (E)     fontBitstreamVera             (E)
+    AnyEvent                          (E)     fontLiberation                (E)
+    App::Cmd                          (E)     fontawesome                   (E)
+    App::cpanminus                    (E)     fontquiver                    (E)
+    AppConfig                         (E)     fonttools                     (E)
+    Archive::Extract                  (E)     forcats                       (E)
+    Array::Transpose                  (E)     foreach                       (E)
+    Array::Utils                      (E)     forecast                      (E)
+    Authen::NTLM                      (E)     foreign                       (E)
+    Authen::SASL                      (E)     formatR                       (E)
+    AutoLoader                        (E)     formula.tools                 (E)
+    B::COW                            (E)     fossil                        (E)
+    B::Hooks::EndOfScope              (E)     fpc                           (E)
+    B::Lint                           (E)     fpp                           (E)
+    BB                                (E)     fracdiff                      (E)
+lines 1-31
+
+    fitdistrplus                      (E)     zip                           (E)
+    flashClust                        (E)     zipfile36                     (E)
+    flexclust                         (E)     zipp                          (E)
+    flexmix                           (E)     zoo                           (E)
+    flextable                         (E)
+
+[removed most of the output here for clarity]
+
+These extensions cannot be loaded directly, use "module spider extension_name" for more information.
+
+  Where:
+   E:  Extension that is provided by another module
+
+If the avail list is too long consider trying:
+
+"module --default avail" or "ml -d av" to just list the default modules.
+"module overview" or "ml ov" to display the number of modules for each name.
+
+Use "module spider" to find all possible modules and extensions.
+Use "module keyword key1 key2 ..." to search for all possible modules matching any of the "keys".
+```
