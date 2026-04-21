@@ -10,35 +10,35 @@ The following list captures terms that need to be added to this glossary. This i
 ---
 
 [Accelerator](#accelerator)  
-[CPU](#cpu)  
+[Central Processing Unit](#cpu)  
 [Cloud Computing](#cloud-computing)  
 [Cluster](#cluster)  
 [Compute Node](#compute-node)  
 [Coupling Loose vs. Tight](#coupling-loose-vs-tight)  
-[CUDA](#cuda)  
+[Compute Unified Device Architecture](#cuda)  
 [Distributed Memory](#distributed-memory)  
 [Execution Node](#execution-node)  
 [Flynn's Taxonomy](#flynns-taxonomy)  
-[GPU](#gpu)  
+[Graphics Processing Unit](#gpu)  
 [Grid Computing](#grid-computing)  
 [Grid Engine](#grid-engine)  
-[HPC](#hpc)  
+[High-Performance Computing](#hpc)  
 [Hyper-Threading](#hyper-threading)  
 [InfiniBand](#infiniband)  
 [Interconnect](#interconnect)  
 [Massively Parallel](#massively-parallel)  
-[MPI](#mpi)  
+[Message Passing Interface](#mpi)  
 [Node](#node)  
-[OpenMP](#openmp)  
+[Open Multi-Processing](#openmp)  
 [Parallel](#parallel)  
 [Serial](#serial)  
 [Server](#server)  
 [Shared Memory](#shared-memory)  
-[SIMD](#simd)  
-[SIMT](#simt)  
+[Single Instruction, Multiple Data](#simd)  
+[Single Instruction, Multiple Threads](#simt)  
 [Slurm](#slurm)  
-[Symmetric Multiprocessing](#symmetric-multiprocessing)  
-[SMT](#simultaneous-multithreading)  
+[Symmetric Multiprocessing](#smp)  
+[Simultaneous Multithreading](#smt)  
 [Supercomputer](#supercomputer)  
 [Worker Node](#worker-node)  
 [Workstation](#workstation)
@@ -140,7 +140,7 @@ More info: [High-Performance Computing](https://en.wikipedia.org/wiki/High-perfo
 
 ### Hyper-Threading {#hyper-threading}
 
-**Hyper-Threading** technology is a form of [simultaneous-multithreading](#simultaneous-multithreading) technology introduced by Intel.
+**Hyper-Threading** technology is a form of [simultaneous-multithreading](#smt) technology introduced by Intel.
 
 Architecturally, a processor with Hyper-Threading technology consists of two logical processors per core, each of which has its own processor architectural state.
 
@@ -179,7 +179,7 @@ An HPC **node** is an individual server (computer) within an [HPC](#hpc) [cluste
 
 More info: [Node](https://en.wikipedia.org/wiki/Node_\(computer_science\))
 
-### OpenMP {#openmp}
+### Open Multi-Processing (OpenMP) {#openmp}
 
 **OpenMP** is an application programming interface which provides a model for parallel programming in [shared memory](#shared-memory) systems within a single node that is portable across architectures from different vendors.
 
@@ -232,14 +232,14 @@ More info: [SIMT](https://en.wikipedia.org/wiki/Single_instruction,_multiple_thr
 
 More info: [Slurm](https://en.wikipedia.org/wiki/Slurm_Workload_Manager)
 
-### Symmetric Multiprocessing (SMP) {#symmetric-multiprocessing}
+### Symmetric Multiprocessing (SMP) {#smp}
 
 **Symmetric Multiprocessing (SMP)** involves a multiprocessor hardware and software architecture where two or more identical processors are connected to a single shared main memory with equal access to all memory and I/O devices. 
 It is controlled by a single operating system and treats all processes equally with no single processor having privileged access.
 
 More info: [Symmetric multiprocessing](https://en.wikipedia.org/wiki/Symmetric_multiprocessing)
 
-### Simultaneous multithreading (SMT) {#simultaneous-multithreading}
+### Simultaneous multithreading (SMT) {#smt}
 
 **Simultaneous multithreading (SMT)** is a technique for improving the overall efficiency of superscalar CPUs with hardware multithreading. 
 
