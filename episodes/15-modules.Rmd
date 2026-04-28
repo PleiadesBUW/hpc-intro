@@ -96,7 +96,7 @@ message telling you so.
 ```
 
 ```output
-No Modulefiles Currently Loaded.
+No modules loaded
 ```
 
 ## Loading and Unloading Software
