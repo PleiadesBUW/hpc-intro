@@ -323,7 +323,8 @@ As before, use the status commands to check when your job runs.
 ```
 
 ```output
-slurm-347178.out  parallel-job.sh  slurm-347087.out  serial-job.sh  amdahl  README.md  LICENSE.txt
+slurm-347178.out  parallel-job.sh  amdahl   pyproject.toml
+slurm-347087.out  serial-job.sh    LICENSE  README.md
 ```
 
 ```bash
@@ -331,16 +332,16 @@ slurm-347178.out  parallel-job.sh  slurm-347087.out  serial-job.sh  amdahl  READ
 ```
 
 ```output
-Doing 30.000 seconds of 'work' on 4 processors,
-which should take 10.875 seconds with 0.850 parallel proportion of the workload.
+Doing 30.000000 seconds of 'work' on 4 processors,
+ which should take 12.000000 seconds with 0.800000 parallel proportion of the workload.
 
-  Hello, World! I am process 0 of 4 on fugg1. I will do all the serial 'work' for 4.500 seconds.
-  Hello, World! I am process 2 of 4 on fugg1. I will do parallel 'work' for 6.375 seconds.
-  Hello, World! I am process 1 of 4 on fugg1. I will do parallel 'work' for 6.375 seconds.
-  Hello, World! I am process 3 of 4 on fugg1. I will do parallel 'work' for 6.375 seconds.
-  Hello, World! I am process 0 of 4 on fugg1. I will do parallel 'work' for 6.375 seconds.
+  Hello, World! I am process 0 of 4 on fugg1. I will do all the serial 'work' for 6.851971 seconds.
+  Hello, World! I am process 2 of 4 on fugg1. I will do parallel 'work' for 6.726753 seconds.
+  Hello, World! I am process 1 of 4 on fugg1. I will do parallel 'work' for 6.742398 seconds.
+  Hello, World! I am process 3 of 4 on fugg1. I will do parallel 'work' for 6.782674 seconds.
+  Hello, World! I am process 0 of 4 on fugg1. I will do parallel 'work' for 6.468167 seconds.
 
-Total execution time (according to rank 0): 10.888 seconds
+Total execution time (according to rank 0): 13.579746 seconds
 ```
 
 :::::::::::::::::::::::::::::::::::::::  challenge
@@ -440,7 +441,8 @@ As before, use the status commands to check when your job runs.
 ```
 
 ```output
-slurm-347271.out  parallel-job.sh  slurm-347178.out  slurm-347087.out  serial-job.sh  amdahl  README.md  LICENSE.txt
+slurm-347271.out     slurm-347178.out  serial-job.sh  LICENSE         README.md
+parallel-job.sh      slurm-347087.out  amdahl         pyproject.toml
 ```
 
 ```bash
@@ -448,19 +450,20 @@ slurm-347271.out  parallel-job.sh  slurm-347178.out  slurm-347087.out  serial-jo
 ```
 
 ```output
-which should take 7.688 seconds with 0.850 parallel proportion of the workload.
+Doing 30.000000 seconds of 'work' on 8 processors,
+ which should take 9.000000 seconds with 0.800000 parallel proportion of the workload.
 
-  Hello, World! I am process 4 of 8 on fugg1. I will do parallel 'work' for 3.188 seconds.
-  Hello, World! I am process 0 of 8 on fugg1. I will do all the serial 'work' for 4.500 seconds.
-  Hello, World! I am process 2 of 8 on fugg1. I will do parallel 'work' for 3.188 seconds.
-  Hello, World! I am process 1 of 8 on fugg1. I will do parallel 'work' for 3.188 seconds.
-  Hello, World! I am process 3 of 8 on fugg1. I will do parallel 'work' for 3.188 seconds.
-  Hello, World! I am process 5 of 8 on fugg1. I will do parallel 'work' for 3.188 seconds.
-  Hello, World! I am process 6 of 8 on fugg1. I will do parallel 'work' for 3.188 seconds.
-  Hello, World! I am process 7 of 8 on fugg1. I will do parallel 'work' for 3.188 seconds.
-  Hello, World! I am process 0 of 8 on fugg1. I will do parallel 'work' for 3.188 seconds.
+  Hello, World! I am process 4 of 8 on fugg1. I will do parallel 'work' for 3.157831 seconds.
+  Hello, World! I am process 0 of 8 on fugg1. I will do all the serial 'work' for 6.031285 seconds.
+  Hello, World! I am process 2 of 8 on fugg1. I will do parallel 'work' for 3.215214 seconds.
+  Hello, World! I am process 1 of 8 on fugg1. I will do parallel 'work' for 3.524280 seconds.
+  Hello, World! I am process 3 of 8 on fugg1. I will do parallel 'work' for 3.589039 seconds.
+  Hello, World! I am process 5 of 8 on fugg1. I will do parallel 'work' for 3.501589 seconds.
+  Hello, World! I am process 6 of 8 on fugg1. I will do parallel 'work' for 3.207707 seconds.
+  Hello, World! I am process 7 of 8 on fugg1. I will do parallel 'work' for 3.071680 seconds.
+  Hello, World! I am process 0 of 8 on fugg1. I will do parallel 'work' for 3.482018 seconds.
 
-Total execution time (according to rank 0): 7.697 seconds
+Total execution time (according to rank 0): 9.514393 seconds
 ```
 
 ::::::::::::::::::::::::::::::::::::::  discussion
