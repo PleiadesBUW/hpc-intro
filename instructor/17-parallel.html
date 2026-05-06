@@ -575,7 +575,7 @@ launch it.</p>
 <span id="cb12-5"><a href="#cb12-5" tabindex="-1" aria-label="code-block-12-5"></a><span class="co">#SBATCH -n 1</span></span>
 <span id="cb12-6"><a href="#cb12-6" tabindex="-1" aria-label="code-block-12-6"></a></span>
 <span id="cb12-7"><a href="#cb12-7" tabindex="-1" aria-label="code-block-12-7"></a><span class="co"># Load the computing environment we need</span></span>
-<span id="cb12-8"><a href="#cb12-8" tabindex="-1" aria-label="code-block-12-8"></a><span class="ex">module</span> load Python</span>
+<span id="cb12-8"><a href="#cb12-8" tabindex="-1" aria-label="code-block-12-8"></a><span class="ex">module</span> load python</span>
 <span id="cb12-9"><a href="#cb12-9" tabindex="-1" aria-label="code-block-12-9"></a></span>
 <span id="cb12-10"><a href="#cb12-10" tabindex="-1" aria-label="code-block-12-10"></a><span class="co"># Execute the task</span></span>
 <span id="cb12-11"><a href="#cb12-11" tabindex="-1" aria-label="code-block-12-11"></a><span class="ex">amdahl</span></span></code></pre>
@@ -600,7 +600,7 @@ output?</p>
 <button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler1" aria-expanded="false" aria-controls="collapseSpoiler1">
   <h3 class="accordion-header" id="headingSpoiler1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div> Read the Job Output </h3>
 </button>
-<div id="collapseSpoiler1" class="accordion-collapse collapse" aria-labelledby="headingSpoiler1" data-bs-parent="#accordionSpoiler1">
+<div id="collapseSpoiler1" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler1" aria-labelledby="headingSpoiler1">
 <div class="accordion-body">
 <p>The cluster output should be written to a file in the folder you
 launched the job from. For example,</p>
@@ -625,8 +625,8 @@ launched the job from. For example,</p>
 <pre class="output" tabindex="0"><code>Doing 30.000000 seconds of 'work' on 1 processor,
 which should take 30.000000 seconds with 0.800000 parallel proportion of the workload.
 
-  Hello, World! I am process 0 of 1 on fugg11. I will do all the serial 'work' for 7.021608 seconds.
-  Hello, World! I am process 0 of 1 on fugg11. I will do parallel 'work' for 26.302983 seconds.
+  Hello, World! I am process 0 of 1 on fugg1. I will do all the serial 'work' for 7.021608 seconds.
+  Hello, World! I am process 0 of 1 on fugg1. I will do parallel 'work' for 26.302983 seconds.
 
 Total execution time (according to rank 0): 33.326056 seconds</code></pre>
 </div>
@@ -713,7 +713,7 @@ run-time.</p>
 <span id="cb20-6"><a href="#cb20-6" tabindex="-1" aria-label="code-block-20-6"></a></span>
 <span id="cb20-7"><a href="#cb20-7" tabindex="-1" aria-label="code-block-20-7"></a><span class="co"># Load the computing environment we need</span></span>
 <span id="cb20-8"><a href="#cb20-8" tabindex="-1" aria-label="code-block-20-8"></a><span class="co"># (mpi4py and numpy are in SciPy-bundle)</span></span>
-<span id="cb20-9"><a href="#cb20-9" tabindex="-1" aria-label="code-block-20-9"></a><span class="ex">module</span> load Python</span>
+<span id="cb20-9"><a href="#cb20-9" tabindex="-1" aria-label="code-block-20-9"></a><span class="ex">module</span> load python</span>
 <span id="cb20-10"><a href="#cb20-10" tabindex="-1" aria-label="code-block-20-10"></a><span class="ex">module</span> load SciPy-bundle</span>
 <span id="cb20-11"><a href="#cb20-11" tabindex="-1" aria-label="code-block-20-11"></a></span>
 <span id="cb20-12"><a href="#cb20-12" tabindex="-1" aria-label="code-block-20-12"></a><span class="co"># Execute the task</span></span>
@@ -749,11 +749,11 @@ are in the batch file rather than the command line.</p>
 <pre class="output" tabindex="0"><code>Doing 30.000 seconds of 'work' on 4 processors,
 which should take 10.875 seconds with 0.850 parallel proportion of the workload.
 
-  Hello, World! I am process 0 of 4 on fugg11. I will do all the serial 'work' for 4.500 seconds.
-  Hello, World! I am process 2 of 4 on fugg11. I will do parallel 'work' for 6.375 seconds.
-  Hello, World! I am process 1 of 4 on fugg11. I will do parallel 'work' for 6.375 seconds.
-  Hello, World! I am process 3 of 4 on fugg11. I will do parallel 'work' for 6.375 seconds.
-  Hello, World! I am process 0 of 4 on fugg11. I will do parallel 'work' for 6.375 seconds.
+  Hello, World! I am process 0 of 4 on fugg1. I will do all the serial 'work' for 4.500 seconds.
+  Hello, World! I am process 2 of 4 on fugg1. I will do parallel 'work' for 6.375 seconds.
+  Hello, World! I am process 1 of 4 on fugg1. I will do parallel 'work' for 6.375 seconds.
+  Hello, World! I am process 3 of 4 on fugg1. I will do parallel 'work' for 6.375 seconds.
+  Hello, World! I am process 0 of 4 on fugg1. I will do parallel 'work' for 6.375 seconds.
 
 Total execution time (according to rank 0): 10.888 seconds</code></pre>
 </div>
@@ -775,7 +775,7 @@ does that mean it finished in ¼ the time?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>The parallel job did take <em>less</em> time: 11 seconds is better
 than 30! But it is only a 2.7× improvement, not 4×.</p>
@@ -837,7 +837,7 @@ our <code>amdahl</code> code gets.</p>
 <span id="cb27-6"><a href="#cb27-6" tabindex="-1" aria-label="code-block-27-6"></a></span>
 <span id="cb27-7"><a href="#cb27-7" tabindex="-1" aria-label="code-block-27-7"></a><span class="co"># Load the computing environment we need</span></span>
 <span id="cb27-8"><a href="#cb27-8" tabindex="-1" aria-label="code-block-27-8"></a><span class="co"># (mpi4py and numpy are in SciPy-bundle)</span></span>
-<span id="cb27-9"><a href="#cb27-9" tabindex="-1" aria-label="code-block-27-9"></a><span class="ex">module</span> load Python</span>
+<span id="cb27-9"><a href="#cb27-9" tabindex="-1" aria-label="code-block-27-9"></a><span class="ex">module</span> load python</span>
 <span id="cb27-10"><a href="#cb27-10" tabindex="-1" aria-label="code-block-27-10"></a><span class="ex">module</span> load SciPy-bundle</span>
 <span id="cb27-11"><a href="#cb27-11" tabindex="-1" aria-label="code-block-27-11"></a></span>
 <span id="cb27-12"><a href="#cb27-12" tabindex="-1" aria-label="code-block-27-12"></a><span class="co"># Execute the task</span></span>
@@ -872,15 +872,15 @@ are in the batch file rather than the command line.</p>
 </h3>
 <pre class="output" tabindex="0"><code>which should take 7.688 seconds with 0.850 parallel proportion of the workload.
 
-  Hello, World! I am process 4 of 8 on fugg11. I will do parallel 'work' for 3.188 seconds.
-  Hello, World! I am process 0 of 8 on fugg11. I will do all the serial 'work' for 4.500 seconds.
-  Hello, World! I am process 2 of 8 on fugg11. I will do parallel 'work' for 3.188 seconds.
-  Hello, World! I am process 1 of 8 on fugg11. I will do parallel 'work' for 3.188 seconds.
-  Hello, World! I am process 3 of 8 on fugg11. I will do parallel 'work' for 3.188 seconds.
-  Hello, World! I am process 5 of 8 on fugg11. I will do parallel 'work' for 3.188 seconds.
-  Hello, World! I am process 6 of 8 on fugg11. I will do parallel 'work' for 3.188 seconds.
-  Hello, World! I am process 7 of 8 on fugg11. I will do parallel 'work' for 3.188 seconds.
-  Hello, World! I am process 0 of 8 on fugg11. I will do parallel 'work' for 3.188 seconds.
+  Hello, World! I am process 4 of 8 on fugg1. I will do parallel 'work' for 3.188 seconds.
+  Hello, World! I am process 0 of 8 on fugg1. I will do all the serial 'work' for 4.500 seconds.
+  Hello, World! I am process 2 of 8 on fugg1. I will do parallel 'work' for 3.188 seconds.
+  Hello, World! I am process 1 of 8 on fugg1. I will do parallel 'work' for 3.188 seconds.
+  Hello, World! I am process 3 of 8 on fugg1. I will do parallel 'work' for 3.188 seconds.
+  Hello, World! I am process 5 of 8 on fugg1. I will do parallel 'work' for 3.188 seconds.
+  Hello, World! I am process 6 of 8 on fugg1. I will do parallel 'work' for 3.188 seconds.
+  Hello, World! I am process 7 of 8 on fugg1. I will do parallel 'work' for 3.188 seconds.
+  Hello, World! I am process 0 of 8 on fugg1. I will do parallel 'work' for 3.188 seconds.
 
 Total execution time (according to rank 0): 7.697 seconds</code></pre>
 </div>

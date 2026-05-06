@@ -20,15 +20,16 @@ remote:
   login: "fugg1.pleiades.uni-wuppertal.de"
   portal: ""
   host: "fugg1"
-  node: "fugg11"
+  hosttype: "x86_64" # architecture family example, output from `uname -m` on a login node
+  node: "fugg1"
   location: "pleiades.uni-wuppertal.de"
-  homedir: "/common/home"
+  homedir: "/common/home/user"
   user: "user"
-  module_python3: "Python"
+  module_python3: "python"
   prompt: "[user@fugg1 ~]$"
   shebang: "#!/bin/bash"
   modules:
-    python: "Python"
+    python: "python"
   quota: "beegfs-ctl --getquota --uid $USER"
 
 
