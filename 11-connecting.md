@@ -369,7 +369,7 @@ by running `pwd` to **p**rint the **w**orking **d**irectory.
 ```
 
 ```output
-/common/home/user
+/common/home/user/user
 ```
 
 Great, we know where we are! Let's see what's in our current directory:
@@ -397,7 +397,7 @@ double-check, include hidden files in your directory listing:
 ```
 
 In the first column, `.` is a reference to the current directory and `..` a
-reference to its parent (`/common/home`). You may or may not see
+reference to its parent (`/common/home/user`). You may or may not see
 the other files, or files like them: `.bashrc` is a shell configuration file,
 which you can edit with your preferences; and `.ssh` is a directory storing SSH
 keys and a record of authorized connections.

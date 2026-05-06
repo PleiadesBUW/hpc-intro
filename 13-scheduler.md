@@ -405,7 +405,7 @@ job with `Ctrl-c`.)
 ```
 
 ```output
-fugg11
+fugg1
 ```
 
 `srun` accepts all of the same options as

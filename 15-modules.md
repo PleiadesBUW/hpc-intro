@@ -202,7 +202,7 @@ We can load the `python3` command with `module load`:
 
 
 ```bash
-[user@fugg1 ~]$ module load Python
+[user@fugg1 ~]$ module load python
 [user@fugg1 ~]$ which python3
 ```
 
@@ -427,7 +427,7 @@ compute node).
 
 #SBATCH -t 00:00:30
 
-module load Python
+module load python
 
 python3 --version
 ```

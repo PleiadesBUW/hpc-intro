@@ -52,11 +52,11 @@ in a typical shell session:
 ```
 
 ```output
-HOME=/common/home/user
+HOME=/common/home/user/user
 HOSTNAME=fugg1
 HOSTTYPE=x86_64
-PATH=/common/home/user/bin:/usr/local/git/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
-PWD=/common/home/user
+PATH=/common/home/user/user/bin:/usr/local/git/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
+PWD=/common/home/user/user
 UID=1000
 USER=user
 ...
@@ -97,14 +97,14 @@ Let's try this instead:
 ```
 
 ```output
-/common/home/user
+/common/home/user/user
 ```
 
 The dollar sign tells the shell that we want the *value* of the variable
 rather than its name.
 This works just like wildcards:
 the shell does the replacement *before* running the program we've asked for.
-Thanks to this expansion, what we actually run is ``echo /common/home/user ``,
+Thanks to this expansion, what we actually run is ``echo /common/home/user/user ``,
 which displays the right thing.
 
 ## Creating and Changing Variables
@@ -252,7 +252,7 @@ To show how this works,
 here are the components of `PATH` listed one per line:
 
 ```output
-/common/home/user/bin
+/common/home/user/user/bin
 /usr/local/git/bin
 /usr/bin
 /bin
@@ -266,12 +266,12 @@ there are actually three programs called `analyze`
 in three different directories:
 `/bin/analyze`,
 `/usr/local/bin/analyze`,
-and `` /common/home/user/analyze ``.
+and `` /common/home/user/user/analyze ``.
 Since the shell searches the directories in the order they're listed in `PATH`,
 it finds `/bin/analyze` first and runs that.
-Notice that it will *never* find the program `` /common/home/user/analyze ``
+Notice that it will *never* find the program `` /common/home/user/user/analyze ``
 unless we type in the full path to the program,
-since the directory `` /common/home/user `` isn't in `PATH`.
+since the directory `` /common/home/user/user `` isn't in `PATH`.
 
 This means that I can have executables in lots of different places as long as
 I remember that I need to update my `PATH` so that my shell can find them.
