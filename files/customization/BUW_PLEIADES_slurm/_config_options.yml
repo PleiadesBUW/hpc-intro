@@ -23,7 +23,7 @@ remote:
   hosttype: "x86_64" # architecture family example, output from `uname -m` on a login node
   node: "fugg1"
   location: "pleiades.uni-wuppertal.de"
-  homedir: "/common/home/user"
+  homedir: "/common/home"
   user: "user"
   module_python3: "python"
   prompt: "[user@fugg1 ~]$"
