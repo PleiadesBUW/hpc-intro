@@ -59,7 +59,7 @@ in a typical shell session:
 HOME=`r config$remote$home`/`r config$remote$user`
 HOSTNAME=`r config$remote$host`
 HOSTTYPE=`r config$remote$hosttype`
-PATH=`r config$remote$home`/`r config$remote$user`/bin:/usr/local/git/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
+PATH=`r config$remote$home`/`r config$remote$user`/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin
 PWD=`r config$remote$home`/`r config$remote$user`
 UID=1000
 USER=`r config$remote$user`
@@ -256,8 +256,6 @@ To show how this works, here are the components of `PATH` listed one per line:
 
 ```output
 `r config$remote$home`/`r config$remote$user`/bin
-/bin
-/sbin
 /usr/local/bin
 /usr/bin
 /usr/local/sbin
