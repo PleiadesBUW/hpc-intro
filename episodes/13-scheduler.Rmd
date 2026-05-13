@@ -221,8 +221,6 @@ The following are several key resource requests:
 - `--cpus-per-task=<ncpus>` or `-c <ncpus>`: How many CPUs should be allocated
   to each task/process?
 
-- `--gpus=<count>`: Request GPUs for the job allocation.
-
 - `--partition=<partition>` or `-p <partition>`: Specify which scheduler
   partition/queue the job should run in.
 
