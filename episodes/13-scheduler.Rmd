@@ -245,6 +245,10 @@ The following are several key resource requests:
   available resources of one node, `r config$sched$name` may allocate multiple
   nodes automatically, subject to partition limits and scheduler policies.
 
+For some resources, such as GPUs, the way to request them may be site-specific
+or specific to version of the resource scheduler. For this reason we do not
+include them in the list above.
+
 Note that just *requesting* these resources does not make your job run faster,
 nor does it necessarily mean that you will consume all of these resources. It
 only means that these are made available to you. Your job may end up using less
