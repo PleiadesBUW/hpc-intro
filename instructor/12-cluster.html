@@ -357,16 +357,16 @@
       <div class="d-none d-sm-none d-md-block">
         <a class="chapter-link" href="../instructor/11-connecting.html" rel="prev">
           <i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>
-          Previous: Connecting to a
+          Previous: Connecting to a remote HPC system...
         </a>
         <a class="chapter-link float-end" href="../instructor/13-scheduler.html" rel="next">
-          Next: Scheduler...
+          Next: Scheduler Fundamentals...
           <i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i>
         </a>
       </div>
     </nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Working on a remote HPC system</h1>
-        <p>Last updated on 2026-08-25 |
+        <p>Last updated on 2026-09-03 |
 
         <a href="https://github.com/carpentries-incubator/hpc-intro/edit/main/episodes/12-cluster.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -469,16 +469,16 @@ the terminal, you’ll write something like
 separate the two parts of a single argument.</p>
 <p>Go ahead and open your terminal or graphical SSH client, then log in
 to the cluster using your username and the remote computer you can reach
-from the outside world, pleiades.uni-wuppertal.de.</p>
+from the outside world, cluster.hpc-carpentry.org.</p>
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1" aria-label="code-block-1-1"></a><span class="ex">[you@laptop:~]$</span> ssh user@fugg1.pleiades.uni-wuppertal.de</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1" aria-label="code-block-1-1"></a><span class="ex">[you@laptop:~]$</span> ssh yourUsername@cluster.hpc-carpentry.org</span></code></pre>
 </div>
-<p>Remember to replace <code>user</code> with your username or the one
-supplied by the instructors. You may be asked for your password. Watch
-out: the characters you type after the password prompt are not displayed
-on the screen. Normal output will resume once you press
+<p>Remember to replace <code>yourUsername</code> with your username or
+the one supplied by the instructors. You may be asked for your password.
+Watch out: the characters you type after the password prompt are not
+displayed on the screen. Normal output will resume once you press
 <code>Enter</code>.</p>
 </section><section><h2 class="section-heading" id="where-are-we">Where Are We?<a class="anchor" aria-label="anchor" href="#where-are-we"></a></h2>
 <hr class="half-width"><p>Very often, many users are tempted to think of a high-performance
@@ -491,12 +491,12 @@ that the current hostname is also part of our prompt!)</p>
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1" aria-label="code-block-2-1"></a><span class="ex">[user@fugg1</span> ~]$ hostname</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1" aria-label="code-block-2-1"></a><span class="ex">[yourUsername@login1</span> ~]$ hostname</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code><span><span class="va">fugg1</span></span></code></pre>
+<pre class="output" tabindex="0"><code><span><span class="va">login1</span></span></code></pre>
 </div>
 <div id="whats-in-your-home-directory" class="callout challenge">
 <div class="callout-square">
@@ -523,8 +523,8 @@ neighbors.</p>
 </button>
 <div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
-<p>The deepest layer should differ: <code>user</code> is uniquely yours.
-Are there differences in the path at higher levels?</p>
+<p>The deepest layer should differ: <code>yourUsername</code> is
+uniquely yours. Are there differences in the path at higher levels?</p>
 <p>If both of you have empty directories, they will look identical. If
 you or your neighbor has used the system before, there may be
 differences. What are you working on?</p>
@@ -533,7 +533,7 @@ differences. What are you working on?</p>
 <div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1" aria-label="code-block-4-1"></a><span class="ex">[user@fugg1</span> ~]$ pwd</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1" aria-label="code-block-4-1"></a><span class="ex">[yourUsername@login1</span> ~]$ pwd</span></code></pre>
 </div>
 <p>You can run <code>ls</code> to <strong>l</strong>i<strong>s</strong>t
 the directory contents, though it’s possible nothing will show up (if no
@@ -542,7 +542,7 @@ show hidden files, too.</p>
 <div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1" aria-label="code-block-5-1"></a><span class="ex">[user@fugg1</span> ~]$ ls <span class="at">-a</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1" aria-label="code-block-5-1"></a><span class="ex">[yourUsername@login1</span> ~]$ ls <span class="at">-a</span></span></code></pre>
 </div>
 <p>At a minimum, this will show the current directory as <code>.</code>,
 and the parent directory as <code>..</code>.</p>
@@ -598,32 +598,15 @@ command <code>sinfo</code>.</p>
 <div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" tabindex="-1" aria-label="code-block-6-1"></a><span class="ex">[user@fugg1</span> ~]$ sinfo</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" tabindex="-1" aria-label="code-block-6-1"></a><span class="ex">[yourUsername@login1</span> ~]$ sinfo</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>PARTITION AVAIL  TIMELIMIT  NODES  STATE NODELIST
-long         up 42-00:00:0     13   resv wn[21035-21043,21045-21048]
-long         up 42-00:00:0      9    mix wn[21001,21007,21010,21012,21018,21020,21022,21029-21030]
-long         up 42-00:00:0     24  alloc wn[21002-21006,21008-21009,21011,21013-21017,21019,21021,21023-21028,21034,21044,21049]
-normal*      up 4-00:00:00      1  down* wn21190
-normal*      up 4-00:00:00      1   drng wn21258
-normal*      up 4-00:00:00     14   resv wn[21035-21043,21045-21048,21101]
-normal*      up 4-00:00:00    106    mix wn[21001,21007,21010,21012,21018,21020,21022,21029-21030,21033,21051,21057-21058,21063-21064,21068,21071,21075-21076,21078-21079,21088,21094-21096,21105,21107,21119-21120,21133-21134,21138,21143-21144,21152-21153,21155-21156,21158,21161-21162,21166,21168-21170,21173,21175,21178,21180-21181,21183-21186,21188-21189,21191-21192,21195-21197,21199,21203-21206,21208-21211,21213,21216-21217,21219-21220,21222-21224,21226-21227,21229-21232,21234-21236,21238,21240,21242-21245,21247-21257,21261,21263]
-normal*      up 4-00:00:00    146  alloc wn[21002-21006,21008-21009,21011,21013-21017,21019,21021,21023-21028,21031-21032,21034,21044,21049-21050,21052-21056,21059-21062,21065-21067,21069-21070,21072-21074,21077,21080-21087,21089-21093,21097-21100,21102-21104,21106,21108-21118,21121-21132,21135-21137,21139-21142,21145-21151,21154,21157,21159-21160,21163-21165,21167,21171-21172,21174,21176-21177,21179,21182,21187,21193-21194,21198,21200-21202,21207,21212,21214-21215,21218,21221,21225,21228,21233,21237,21239,21241,21246,21259-21260,21262,21264-21268]
-short        up   12:00:00      1  down* wn21190
-short        up   12:00:00      1   drng wn21258
-short        up   12:00:00     58    mix wn[21180-21181,21183-21186,21188-21189,21191-21192,21195-21197,21199,21203-21206,21208-21211,21213,21216-21217,21219-21220,21222-21224,21226-21227,21229-21232,21234-21236,21238,21240,21242-21245,21247-21257,21261,21263]
-short        up   12:00:00     29  alloc wn[21182,21187,21193-21194,21198,21200-21202,21207,21212,21214-21215,21218,21221,21225,21228,21233,21237,21239,21241,21246,21259-21260,21262,21264-21268]
-atlas        up 4-00:00:00      1  down* wn21190
-atlas        up 4-00:00:00     14   resv wn[21035-21043,21045-21048,21101]
-atlas        up 4-00:00:00     84    mix wn[21001,21007,21010,21012,21018,21020,21022,21029-21030,21033,21051,21057-21058,21063-21064,21068,21071,21075-21076,21078-21079,21088,21094-21096,21105,21107,21119-21120,21133-21134,21138,21143-21144,21152-21153,21155-21156,21158,21161-21162,21166,21168-21170,21173,21175,21178,21180-21181,21183-21186,21188-21189,21191-21192,21195-21197,21199,21203-21206,21208-21211,21213,21216-21217,21219-21220,21222-21224,21226-21227,21229-21232]
-atlas        up 4-00:00:00    133  alloc wn[21002-21006,21008-21009,21011,21013-21017,21019,21021,21023-21028,21031-21032,21034,21044,21049-21050,21052-21056,21059-21062,21065-21067,21069-21070,21072-21074,21077,21080-21087,21089-21093,21097-21100,21102-21104,21106,21108-21118,21121-21132,21135-21137,21139-21142,21145-21151,21154,21157,21159-21160,21163-21165,21167,21171-21172,21174,21176-21177,21179,21182,21187,21193-21194,21198,21200-21202,21207,21212,21214-21215,21218,21221,21225,21228]
-gpu          up 3-00:00:00      1  drain gpu21005
-gpu          up 3-00:00:00      4    mix gpu[21001-21004]
-gpushort     up   12:00:00      1  drain gpu21005
-gpushort     up   12:00:00      4    mix gpu[21001-21004]</code></pre>
+<pre class="output" tabindex="0"><code>PARTITION          AVAIL  TIMELIMIT  NODES  STATE NODELIST
+cpubase_bycore_b1*    up   infinite      4   idle node[1-2],smnode[1-2]
+node                  up   infinite      2   idle node[1-2]
+smnode                up   infinite      2   idle smnode[1-2]</code></pre>
 </div>
 <p>There are also specialized machines used for managing disk storage,
 user authentication, and other infrastructure-related tasks. Although we
@@ -658,7 +641,7 @@ computer cluster, you need to log out first. To do so, type
 <div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" tabindex="-1" aria-label="code-block-8-1"></a><span class="ex">[user@fugg1</span> ~]$ exit</span>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" tabindex="-1" aria-label="code-block-8-1"></a><span class="ex">[yourUsername@login1</span> ~]$ exit</span>
 <span id="cb8-2"><a href="#cb8-2" tabindex="-1" aria-label="code-block-8-2"></a><span class="ex">[you@laptop:~]$</span></span></code></pre>
 </div>
 </div>
@@ -722,9 +705,9 @@ node.</p>
 <div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" tabindex="-1" aria-label="code-block-12-1"></a><span class="ex">[you@laptop:~]$</span> ssh user@fugg1.pleiades.uni-wuppertal.de</span>
-<span id="cb12-2"><a href="#cb12-2" tabindex="-1" aria-label="code-block-12-2"></a><span class="ex">[user@fugg1</span> ~]$ nproc <span class="at">--all</span></span>
-<span id="cb12-3"><a href="#cb12-3" tabindex="-1" aria-label="code-block-12-3"></a><span class="ex">[user@fugg1</span> ~]$ free <span class="at">-m</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" tabindex="-1" aria-label="code-block-12-1"></a><span class="ex">[you@laptop:~]$</span> ssh yourUsername@cluster.hpc-carpentry.org</span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1" aria-label="code-block-12-2"></a><span class="ex">[yourUsername@login1</span> ~]$ nproc <span class="at">--all</span></span>
+<span id="cb12-3"><a href="#cb12-3" tabindex="-1" aria-label="code-block-12-3"></a><span class="ex">[yourUsername@login1</span> ~]$ free <span class="at">-m</span></span></code></pre>
 </div>
 <p>You can get more information about the processors using
 <code>lscpu</code>, and a lot of detail about the memory by reading the
@@ -732,7 +715,7 @@ file <code>/proc/meminfo</code>:</p>
 <div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" tabindex="-1" aria-label="code-block-13-1"></a><span class="ex">[user@fugg1</span> ~]$ less /proc/meminfo</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" tabindex="-1" aria-label="code-block-13-1"></a><span class="ex">[yourUsername@login1</span> ~]$ less /proc/meminfo</span></code></pre>
 </div>
 <p>You can also explore the available filesystems using <code>df</code>
 to show <strong>d</strong>isk <strong>f</strong>ree space. The
@@ -742,7 +725,7 @@ what kind of filesystem each resource is.</p>
 <div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" tabindex="-1" aria-label="code-block-14-1"></a><span class="ex">[user@fugg1</span> ~]$ df <span class="at">-Th</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" tabindex="-1" aria-label="code-block-14-1"></a><span class="ex">[yourUsername@login1</span> ~]$ df <span class="at">-Th</span></span></code></pre>
 </div>
 </div>
 </div>
@@ -775,11 +758,11 @@ include <code>/usr</code>, depending on how it is <a href="https://en.wikipedia.
 </div>
 </div>
 </div>
-<div id="explore-a-worker-node" class="callout discussion">
+<div id="explore-a-worker-node" class="callout challenge">
 <div class="callout-square">
-<i class="callout-icon" data-feather="message-circle"></i>
+<i class="callout-icon" data-feather="zap"></i>
 </div>
-<span class="callout-header">Discussion</span>
+<span class="callout-header">Challenge</span>
 <div id="explore-a-worker-node" class="callout-inner">
 <h3 class="callout-title">Explore a Worker Node</h3>
 <div class="callout-content">
@@ -789,7 +772,7 @@ name, CPUs and memory available on one of the worker nodes:</p>
 <div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" tabindex="-1" aria-label="code-block-15-1"></a><span class="ex">[user@fugg1</span> ~]$ sinfo <span class="at">-o</span> <span class="st">"%n %c %m"</span> <span class="kw">|</span> <span class="ex">column</span> <span class="at">-t</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" tabindex="-1" aria-label="code-block-15-1"></a><span class="ex">[yourUsername@login1</span> ~]$ sinfo <span class="at">-o</span> <span class="st">"%n %c %m"</span> <span class="kw">|</span> <span class="ex">column</span> <span class="at">-t</span></span></code></pre>
 </div>
 </div>
 </div>
@@ -855,10 +838,10 @@ a shared filesystem.</li>
       <div class="d-none d-sm-none d-md-block">
         <a class="chapter-link" href="../instructor/11-connecting.html" rel="prev">
           <i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>
-          Previous: Connecting to a
+          Previous: Connecting to a remote HPC system...
         </a>
         <a class="chapter-link float-end" href="../instructor/13-scheduler.html" rel="next">
-          Next: Scheduler...
+          Next: Scheduler Fundamentals...
           <i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i>
         </a>
       </div>
@@ -884,7 +867,7 @@ a shared filesystem.</li>
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
 
         <p>Template licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">CC-BY 4.0</a> by <a href="https://carpentries.org/" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.20.2" class="external-link">sandpaper (0.20.2)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.9" class="external-link">pegboard (0.7.9)</a>, and <a href="https://github.com/carpentries/varnish/tree/1.1.1" class="external-link">varnish (1.1.1)</a></p>
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/" class="external-link">sandpaper (0.21.0)</a>, <a href="https://github.com/carpentries/pegboard/tree/" class="external-link">pegboard (0.7.9)</a>, and <a href="https://github.com/carpentries/varnish/tree/" class="external-link">varnish (1.1.2)</a></p>
 		</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
@@ -906,8 +889,8 @@ a shared filesystem.</li>
   "url": "https://carpentries-incubator.github.io/hpc-intro/instructor/12-cluster.html",
   "identifier": "https://carpentries-incubator.github.io/hpc-intro/instructor/12-cluster.html",
   "dateCreated": "2017-03-24",
-  "dateModified": "2026-08-25",
-  "datePublished": "2026-08-25"
+  "dateModified": "2026-09-03",
+  "datePublished": "2026-09-03"
 }
 
   </script><script>

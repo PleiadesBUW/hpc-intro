@@ -359,16 +359,16 @@
       <div class="d-none d-sm-none d-md-block">
         <a class="chapter-link" href="15-modules.html" rel="prev">
           <i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>
-          Previous: Accessing software
+          Previous: Accessing software via Modules...
         </a>
         <a class="chapter-link float-end" href="17-parallel.html" rel="next">
-          Next: Running a parallel...
+          Next: Running a parallel job...
           <i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i>
         </a>
       </div>
     </nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Transferring files with remote computers</h1>
-        <p>Last updated on 2026-08-25 |
+        <p>Last updated on 2026-09-03 |
 
         <a href="https://github.com/carpentries-incubator/hpc-intro/edit/main/episodes/16-transferring-files.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -673,7 +673,7 @@ authentication mechanism.</p>
 <div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" tabindex="-1" aria-label="code-block-10-1"></a><span class="ex">[you@laptop:~]$</span> scp local_file user@fugg1.pleiades.uni-wuppertal.de:remote_destination</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" tabindex="-1" aria-label="code-block-10-1"></a><span class="ex">[you@laptop:~]$</span> scp local_file yourUsername@cluster.hpc-carpentry.org:remote_destination</span></code></pre>
 </div>
 <p>in which <code>@</code> and <code>:</code> are field separators and
 <code>remote_destination</code> is a path relative to your remote home
@@ -692,15 +692,16 @@ exist, it is assumed to be a destination filename for
 <div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" tabindex="-1" aria-label="code-block-11-1"></a><span class="ex">[you@laptop:~]$</span> scp amdahl.tar.gz user@fugg1.pleiades.uni-wuppertal.de:</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" tabindex="-1" aria-label="code-block-11-1"></a><span class="ex">[you@laptop:~]$</span> scp amdahl.tar.gz yourUsername@cluster.hpc-carpentry.org:</span></code></pre>
 </div>
-<div id="why-not-download-on-pleiades-directly" class="callout challenge">
+<div id="why-not-download-on-hpc-carpentrys-cloud-cluster-directly" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <span class="callout-header">Challenge</span>
-<div id="why-not-download-on-pleiades-directly" class="callout-inner">
-<h3 class="callout-title">Why Not Download on PLEIADES Directly?</h3>
+<div id="why-not-download-on-hpc-carpentrys-cloud-cluster-directly" class="callout-inner">
+<h3 class="callout-title">Why Not Download on HPC Carpentry’s Cloud
+Cluster Directly?</h3>
 <div class="callout-content">
 <p>Most computer clusters are protected from the open internet by a
 <em>firewall</em>. For enhanced security, some are configured to allow
@@ -723,23 +724,23 @@ that’s OK!</p>
 <div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" tabindex="-1" aria-label="code-block-12-1"></a><span class="ex">[you@laptop:~]$</span> ssh user@fugg1.pleiades.uni-wuppertal.de</span>
-<span id="cb12-2"><a href="#cb12-2" tabindex="-1" aria-label="code-block-12-2"></a><span class="ex">[user@fugg1</span> ~]$ wget <span class="at">-O</span> amdahl.tar.gz https://github.com/hpc-carpentry/amdahl/tarball/main</span>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" tabindex="-1" aria-label="code-block-12-1"></a><span class="ex">[you@laptop:~]$</span> ssh yourUsername@cluster.hpc-carpentry.org</span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1" aria-label="code-block-12-2"></a><span class="ex">[yourUsername@login1</span> ~]$ wget <span class="at">-O</span> amdahl.tar.gz https://github.com/hpc-carpentry/amdahl/tarball/main</span>
 <span id="cb12-3"><a href="#cb12-3" tabindex="-1" aria-label="code-block-12-3"></a><span class="co"># or</span></span>
-<span id="cb12-4"><a href="#cb12-4" tabindex="-1" aria-label="code-block-12-4"></a><span class="ex">[user@fugg1</span> ~]$ curl <span class="at">-o</span> amdahl.tar.gz <span class="at">-L</span> https://github.com/hpc-carpentry/amdahl/tarball/main</span></code></pre>
+<span id="cb12-4"><a href="#cb12-4" tabindex="-1" aria-label="code-block-12-4"></a><span class="ex">[yourUsername@login1</span> ~]$ curl <span class="at">-o</span> amdahl.tar.gz <span class="at">-L</span> https://github.com/hpc-carpentry/amdahl/tarball/main</span></code></pre>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div id="why-not-download-on-pleiades-directly" class="callout discussion">
+<div id="why-not-download-on-hpc-carpentrys-cloud-cluster-directly" class="callout discussion">
 <div class="callout-square">
 <i class="callout-icon" data-feather="message-circle"></i>
 </div>
 <span class="callout-header">Discussion</span>
-<div id="why-not-download-on-pleiades-directly" class="callout-inner">
-<h3 class="callout-title">Why Not Download on PLEIADES Directly?<em>
-(continued)</em>
+<div id="why-not-download-on-hpc-carpentrys-cloud-cluster-directly" class="callout-inner">
+<h3 class="callout-title">Why Not Download on HPC Carpentry’s Cloud
+Cluster Directly?<em> (continued)</em>
 </h3>
 <div class="callout-content">
 <p>Did it work? If not, what does the terminal output tell you about
@@ -756,7 +757,7 @@ provided.</p>
 <div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" tabindex="-1" aria-label="code-block-13-1"></a><span class="ex">[you@laptop:~]$</span> scp <span class="at">-r</span> amdahl user@fugg1.pleiades.uni-wuppertal.de:</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" tabindex="-1" aria-label="code-block-13-1"></a><span class="ex">[you@laptop:~]$</span> scp <span class="at">-r</span> amdahl yourUsername@cluster.hpc-carpentry.org:</span></code></pre>
 </div>
 <div id="caution" class="callout">
 <div class="callout-square">
@@ -813,7 +814,7 @@ another computer with commonly used options:</p>
 <div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" tabindex="-1" aria-label="code-block-14-1"></a><span class="ex">[you@laptop:~]$</span> rsync <span class="at">-avP</span> amdahl.tar.gz user@fugg1.pleiades.uni-wuppertal.de:</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" tabindex="-1" aria-label="code-block-14-1"></a><span class="ex">[you@laptop:~]$</span> rsync <span class="at">-avP</span> amdahl.tar.gz yourUsername@cluster.hpc-carpentry.org:</span></code></pre>
 </div>
 <p>The options are:</p>
 <ul><li>
@@ -831,7 +832,7 @@ transfer.</li>
 <div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" tabindex="-1" aria-label="code-block-15-1"></a><span class="ex">[you@laptop:~]$</span> rsync <span class="at">-avP</span> amdahl user@fugg1.pleiades.uni-wuppertal.de:~/</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" tabindex="-1" aria-label="code-block-15-1"></a><span class="ex">[you@laptop:~]$</span> rsync <span class="at">-avP</span> amdahl yourUsername@cluster.hpc-carpentry.org:~/</span></code></pre>
 </div>
 <p>As written, this will place the local directory and its contents
 under your home directory on the remote system. If a trailing slash is
@@ -842,7 +843,7 @@ will be copied directly into the destination directory.</p>
 <div class="codewrapper sourceCode" id="cb16">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" tabindex="-1" aria-label="code-block-16-1"></a><span class="ex">[you@laptop:~]$</span> rsync <span class="at">-avP</span> user@fugg1.pleiades.uni-wuppertal.de:amdahl ./</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" tabindex="-1" aria-label="code-block-16-1"></a><span class="ex">[you@laptop:~]$</span> rsync <span class="at">-avP</span> yourUsername@cluster.hpc-carpentry.org:amdahl ./</span></code></pre>
 </div>
 </div>
 </div>
@@ -867,7 +868,7 @@ page if you’re unsure.</p>
 <div class="codewrapper sourceCode" id="cb17">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" tabindex="-1" aria-label="code-block-17-1"></a><span class="ex">[you@laptop:~]$</span> rsync amdahl.tar.gz user@fugg1.pleiades.uni-wuppertal.de:</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" tabindex="-1" aria-label="code-block-17-1"></a><span class="ex">[you@laptop:~]$</span> rsync amdahl.tar.gz yourUsername@cluster.hpc-carpentry.org:</span></code></pre>
 </div>
 <p><em>Hint:</em> check the <code>man</code> page or “help” for
 <code>rsync</code>.</p>
@@ -888,7 +889,7 @@ page if you’re unsure.</p>
 <span id="cb18-2"><a href="#cb18-2" tabindex="-1" aria-label="code-block-18-2"></a><span class="ex">[you@laptop:~]$</span> rsync <span class="at">--help</span> <span class="kw">|</span> <span class="fu">grep</span> port</span>
 <span id="cb18-3"><a href="#cb18-3" tabindex="-1" aria-label="code-block-18-3"></a>     <span class="ex">--port=PORT</span>             specify double-colon alternate port number</span>
 <span id="cb18-4"><a href="#cb18-4" tabindex="-1" aria-label="code-block-18-4"></a><span class="ex">See</span> http://rsync.samba.org/ for updates, bug reports, and answers</span>
-<span id="cb18-5"><a href="#cb18-5" tabindex="-1" aria-label="code-block-18-5"></a><span class="ex">[you@laptop:~]$</span> rsync <span class="at">--port</span><span class="op">=</span>768 amdahl.tar.gz user@fugg1.pleiades.uni-wuppertal.de:</span></code></pre>
+<span id="cb18-5"><a href="#cb18-5" tabindex="-1" aria-label="code-block-18-5"></a><span class="ex">[you@laptop:~]$</span> rsync <span class="at">--port</span><span class="op">=</span>768 amdahl.tar.gz yourUsername@cluster.hpc-carpentry.org:</span></code></pre>
 </div>
 <p>(Note that this command will fail, as the correct port in this case
 is the default: 22.)</p>
@@ -907,15 +908,15 @@ the same dependency.</p>
 executable environment, and a set of communications libraries called
 <code>MPI</code>, and their corresponding Python implementation.</p>
 <p>If you have disconnected, log back in to the cluster:</p>
-<pre><code>[you@laptop:~]$ ssh user@fugg1.pleiades.uni-wuppertal.de</code></pre>
+<pre><code>[you@laptop:~]$ ssh yourUsername@cluster.hpc-carpentry.org</code></pre>
 <p>Then go to the re-named <code>amdahl</code> source tree. Ensure that
 the appropriate Python and MPI modules are loaded, and install the
 executable using the Python <code>pip</code> installation command:</p>
 <div class="codewrapper sourceCode" id="cb20">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" tabindex="-1" aria-label="code-block-20-1"></a><span class="ex">[user@fugg1</span> ~]$ cd amdahl</span>
-<span id="cb20-2"><a href="#cb20-2" tabindex="-1" aria-label="code-block-20-2"></a><span class="ex">[user@fugg1</span> ~]$ python3 <span class="at">-m</span> pip install <span class="at">--user</span> .</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" tabindex="-1" aria-label="code-block-20-1"></a><span class="ex">[yourUsername@login1</span> ~]$ cd amdahl</span>
+<span id="cb20-2"><a href="#cb20-2" tabindex="-1" aria-label="code-block-20-2"></a><span class="ex">[yourUsername@login1</span> ~]$ python3 <span class="at">-m</span> pip install <span class="at">--user</span> .</span></code></pre>
 </div>
 <div id="amdahl-is-python-code" class="callout">
 <div class="callout-square">
@@ -956,20 +957,20 @@ retrieve the tarball from <a href="https://github.com/mpi4py/mpi4py/tarball/mast
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" tabindex="-1" aria-label="code-block-21-1"></a><span class="ex">[you@laptop:~]$</span> wget <span class="at">-O</span> mpi4py.tar.gz https://github.com/mpi4py/mpi4py/tarball/master</span>
-<span id="cb21-2"><a href="#cb21-2" tabindex="-1" aria-label="code-block-21-2"></a><span class="ex">[you@laptop:~]$</span> scp mpi4py.tar.gz user@fugg1.pleiades.uni-wuppertal.de:</span>
+<span id="cb21-2"><a href="#cb21-2" tabindex="-1" aria-label="code-block-21-2"></a><span class="ex">[you@laptop:~]$</span> scp mpi4py.tar.gz yourUsername@cluster.hpc-carpentry.org:</span>
 <span id="cb21-3"><a href="#cb21-3" tabindex="-1" aria-label="code-block-21-3"></a><span class="co"># or</span></span>
-<span id="cb21-4"><a href="#cb21-4" tabindex="-1" aria-label="code-block-21-4"></a><span class="ex">[you@laptop:~]$</span> rsync <span class="at">-avP</span> mpi4py.tar.gz user@fugg1.pleiades.uni-wuppertal.de:</span></code></pre>
+<span id="cb21-4"><a href="#cb21-4" tabindex="-1" aria-label="code-block-21-4"></a><span class="ex">[you@laptop:~]$</span> rsync <span class="at">-avP</span> mpi4py.tar.gz yourUsername@cluster.hpc-carpentry.org:</span></code></pre>
 </div>
 <div class="codewrapper sourceCode" id="cb22">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" tabindex="-1" aria-label="code-block-22-1"></a><span class="ex">[you@laptop:~]$</span> ssh user@fugg1.pleiades.uni-wuppertal.de</span>
-<span id="cb22-2"><a href="#cb22-2" tabindex="-1" aria-label="code-block-22-2"></a><span class="ex">[user@fugg1</span> ~]$ tar <span class="at">-xvzf</span> mpi4py.tar.gz  <span class="co"># extract the archive</span></span>
-<span id="cb22-3"><a href="#cb22-3" tabindex="-1" aria-label="code-block-22-3"></a><span class="ex">[user@fugg1</span> ~]$ mv mpi4py<span class="pp">*</span> mpi4py        <span class="co"># rename the directory</span></span>
-<span id="cb22-4"><a href="#cb22-4" tabindex="-1" aria-label="code-block-22-4"></a><span class="ex">[user@fugg1</span> ~]$ cd mpi4py</span>
-<span id="cb22-5"><a href="#cb22-5" tabindex="-1" aria-label="code-block-22-5"></a><span class="ex">[user@fugg1</span> ~]$ python3 <span class="at">-m</span> pip install <span class="at">--user</span> .</span>
-<span id="cb22-6"><a href="#cb22-6" tabindex="-1" aria-label="code-block-22-6"></a><span class="ex">[user@fugg1</span> ~]$ cd ../amdahl</span>
-<span id="cb22-7"><a href="#cb22-7" tabindex="-1" aria-label="code-block-22-7"></a><span class="ex">[user@fugg1</span> ~]$ python3 <span class="at">-m</span> pip install <span class="at">--user</span> .</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" tabindex="-1" aria-label="code-block-22-1"></a><span class="ex">[you@laptop:~]$</span> ssh yourUsername@cluster.hpc-carpentry.org</span>
+<span id="cb22-2"><a href="#cb22-2" tabindex="-1" aria-label="code-block-22-2"></a><span class="ex">[yourUsername@login1</span> ~]$ tar <span class="at">-xvzf</span> mpi4py.tar.gz  <span class="co"># extract the archive</span></span>
+<span id="cb22-3"><a href="#cb22-3" tabindex="-1" aria-label="code-block-22-3"></a><span class="ex">[yourUsername@login1</span> ~]$ mv mpi4py<span class="pp">*</span> mpi4py        <span class="co"># rename the directory</span></span>
+<span id="cb22-4"><a href="#cb22-4" tabindex="-1" aria-label="code-block-22-4"></a><span class="ex">[yourUsername@login1</span> ~]$ cd mpi4py</span>
+<span id="cb22-5"><a href="#cb22-5" tabindex="-1" aria-label="code-block-22-5"></a><span class="ex">[yourUsername@login1</span> ~]$ python3 <span class="at">-m</span> pip install <span class="at">--user</span> .</span>
+<span id="cb22-6"><a href="#cb22-6" tabindex="-1" aria-label="code-block-22-6"></a><span class="ex">[yourUsername@login1</span> ~]$ cd ../amdahl</span>
+<span id="cb22-7"><a href="#cb22-7" tabindex="-1" aria-label="code-block-22-7"></a><span class="ex">[yourUsername@login1</span> ~]$ python3 <span class="at">-m</span> pip install <span class="at">--user</span> .</span></code></pre>
 </div>
 </div>
 </div>
@@ -996,7 +997,7 @@ search for the <code>amdahl</code> program:</p>
 <div class="codewrapper sourceCode" id="cb24">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" tabindex="-1" aria-label="code-block-24-1"></a><span class="ex">[user@fugg1</span> ~]$ which amdahl</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" tabindex="-1" aria-label="code-block-24-1"></a><span class="ex">[yourUsername@login1</span> ~]$ which amdahl</span></code></pre>
 </div>
 <p>If the command returns no output, displaying a new prompt, it means
 the file <code>amdahl</code> has not been found. You must update the
@@ -1006,15 +1007,15 @@ cluster and back on again so it takes effect.</p>
 <div class="codewrapper sourceCode" id="cb25">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" tabindex="-1" aria-label="code-block-25-1"></a><span class="ex">[user@fugg1</span> ~]$ nano ~/.bashrc</span>
-<span id="cb25-2"><a href="#cb25-2" tabindex="-1" aria-label="code-block-25-2"></a><span class="ex">[user@fugg1</span> ~]$ tail ~/.bashrc</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" tabindex="-1" aria-label="code-block-25-1"></a><span class="ex">[yourUsername@login1</span> ~]$ nano ~/.bashrc</span>
+<span id="cb25-2"><a href="#cb25-2" tabindex="-1" aria-label="code-block-25-2"></a><span class="ex">[yourUsername@login1</span> ~]$ tail ~/.bashrc</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="output" tabindex="0"><code>export PATH=${PATH}:${HOME}/.local/bin</code></pre>
 </div>
-<p>After logging back in to fugg1.pleiades.uni-wuppertal.de,
+<p>After logging back in to cluster.hpc-carpentry.org,
 <code>which</code> should be able to find <code>amdahl</code> without
 difficulties. If you had to load a Python module, load it again.</p>
 </div>
@@ -1027,7 +1028,7 @@ difficulties. If you had to load a Python module, load it again.</p>
 <div class="codewrapper sourceCode" id="cb27">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" tabindex="-1" aria-label="code-block-27-1"></a><span class="ex">[user@fugg1</span> ~]$ amdahl <span class="at">--help</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" tabindex="-1" aria-label="code-block-27-1"></a><span class="ex">[yourUsername@login1</span> ~]$ amdahl <span class="at">--help</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1075,10 +1076,10 @@ your computer.</li>
       <div class="d-none d-sm-none d-md-block">
         <a class="chapter-link" href="15-modules.html" rel="prev">
           <i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>
-          Previous: Accessing software
+          Previous: Accessing software via Modules...
         </a>
         <a class="chapter-link float-end" href="17-parallel.html" rel="next">
-          Next: Running a parallel...
+          Next: Running a parallel job...
           <i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i>
         </a>
       </div>
@@ -1104,7 +1105,7 @@ your computer.</li>
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
 
         <p>Template licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">CC-BY 4.0</a> by <a href="https://carpentries.org/" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.20.2" class="external-link">sandpaper (0.20.2)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.9" class="external-link">pegboard (0.7.9)</a>, and <a href="https://github.com/carpentries/varnish/tree/1.1.1" class="external-link">varnish (1.1.1)</a></p>
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/" class="external-link">sandpaper (0.21.0)</a>, <a href="https://github.com/carpentries/pegboard/tree/" class="external-link">pegboard (0.7.9)</a>, and <a href="https://github.com/carpentries/varnish/tree/" class="external-link">varnish (1.1.2)</a></p>
 		</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
@@ -1126,8 +1127,8 @@ your computer.</li>
   "url": "https://carpentries-incubator.github.io/hpc-intro/16-transferring-files.html",
   "identifier": "https://carpentries-incubator.github.io/hpc-intro/16-transferring-files.html",
   "dateCreated": "2017-03-24",
-  "dateModified": "2026-08-25",
-  "datePublished": "2026-08-25"
+  "dateModified": "2026-09-03",
+  "datePublished": "2026-09-03"
 }
 
   </script><script>
