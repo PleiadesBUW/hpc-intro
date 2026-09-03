@@ -4,8 +4,6 @@ teaching: 45
 exercises: 30
 ---
 
-
-
 ::::::::::::::::::::::::::::::::::::::: objectives
 
 - Submit a simple script to the cluster.
@@ -68,7 +66,7 @@ manner. Our shell script will have three parts:
   name of the machine the script is run on.
 
 ```bash
-[user@fugg1 ~]$ nano example-job.sh
+[yourUsername@login1 ~]$ nano example-job.sh
 ```
 
 ```bash
@@ -89,11 +87,11 @@ Run the script. Does it execute on the cluster or just our login node?
 ## Solution
 
 ```bash
-[user@fugg1 ~]$ bash example-job.sh
+[yourUsername@login1 ~]$ bash example-job.sh
 ```
 
 ```output
-This script is running on fugg1
+This script is running on login1
 ```
 
 :::::::::::::::::::::::::
@@ -111,7 +109,7 @@ a compute node which the queuing system has identified as being
 available to perform the work.
 
 ```bash
-[user@fugg1 ~]$ sbatch  example-job.sh
+[yourUsername@login1 ~]$ sbatch  example-job.sh
 ```
 
 
@@ -123,10 +121,10 @@ And that's all we need to do to submit a job. Our work is done -- now the
 scheduler takes over and tries to run the job for us. While the job is waiting
 to run, it goes into a list of jobs called the *queue*. To check on our job's
 status, we check the queue using the command
-`squeue -u $USER`.
+`squeue -u yourUsername`.
 
 ```bash
-[user@fugg1 ~]$ squeue -u $USER
+[yourUsername@login1 ~]$ squeue -u yourUsername
 ```
 
 ```output
@@ -170,16 +168,16 @@ following the `#SBATCH` comment is interpreted as an
 instruction to the scheduler.
 
 Let's illustrate this by example. By default, a job's name is the name of the
-script, but the `-J` option can be used to change the
+script, but the `--job-name` option can be used to change the
 name of a job. Add an option to the script:
 
 ```bash
-[user@fugg1 ~]$ cat example-job.sh
+[yourUsername@login1 ~]$ cat example-job.sh
 ```
 
 ```bash
 #!/bin/bash
-#SBATCH -J hello-world
+#SBATCH --job-name hello-world
 
 echo -n "This script is running on "
 hostname
@@ -188,8 +186,8 @@ hostname
 Submit the job and monitor its status:
 
 ```bash
-[user@fugg1 ~]$ sbatch  example-job.sh
-[user@fugg1 ~]$ squeue -u $USER
+[yourUsername@login1 ~]$ sbatch  example-job.sh
+[yourUsername@login1 ~]$ squeue -u yourUsername
 ```
 
 ```output
@@ -269,12 +267,12 @@ for it on the cluster.
 ## Solution
 
 ```bash
-[user@fugg1 ~]$ cat example-job.sh
+[yourUsername@login1 ~]$ cat example-job.sh
 ```
 
 ```bash
 #!/bin/bash
-#SBATCH -t 00:01 # timeout in HH:MM
+#SBATCH --time 00:01 # timeout in HH:MM
 
 echo -n "This script is running on "
 sleep 20 # time in seconds
@@ -282,7 +280,7 @@ hostname
 ```
 
 ```bash
-[user@fugg1 ~]$ sbatch  example-job.sh
+[yourUsername@login1 ~]$ sbatch  example-job.sh
 ```
 
 Why are the Slurm runtime and `sleep` time not identical?
@@ -298,13 +296,13 @@ killed. Let's use wall time as an example. We will request 1 minute of
 wall time, and attempt to run a job for two minutes.
 
 ```bash
-[user@fugg1 ~]$ cat example-job.sh
+[yourUsername@login1 ~]$ cat example-job.sh
 ```
 
 ```bash
 #!/bin/bash
-#SBATCH -J long_job
-#SBATCH -t 00:01 # timeout in HH:MM
+#SBATCH --job-name long_job
+#SBATCH --time 00:01 # timeout in HH:MM
 
 echo "This script is running on ... "
 sleep 240 # time in seconds
@@ -315,12 +313,12 @@ Submit the job and wait for it to finish. Once it is has finished, check the
 log file.
 
 ```bash
-[user@fugg1 ~]$ sbatch  example-job.sh
-[user@fugg1 ~]$ squeue -u $USER
+[yourUsername@login1 ~]$ sbatch  example-job.sh
+[yourUsername@login1 ~]$ squeue -u yourUsername
 ```
 
 ```bash
-[user@fugg1 ~]$ cat slurm-12.out
+[yourUsername@login1 ~]$ cat slurm-12.out
 ```
 
 ```output
@@ -348,8 +346,8 @@ its job number (remember to change the walltime so that it runs long enough for
 you to cancel it before it is killed!).
 
 ```bash
-[user@fugg1 ~]$ sbatch  example-job.sh
-[user@fugg1 ~]$ squeue -u $USER
+[yourUsername@login1 ~]$ sbatch  example-job.sh
+[yourUsername@login1 ~]$ squeue -u yourUsername
 ```
 
 ```output
@@ -364,9 +362,9 @@ return of your command prompt indicates that the request to cancel the job was
 successful.
 
 ```bash
-[user@fugg1 ~]$ scancel 38759
+[yourUsername@login1 ~]$ scancel 38759
 # It might take a minute for the job to disappear from the queue...
-[user@fugg1 ~]$ squeue -u $USER
+[yourUsername@login1 ~]$ squeue -u yourUsername
 ```
 
 ```output
@@ -390,15 +388,15 @@ Try submitting multiple jobs and then cancelling them all.
 First, submit a trio of jobs:
 
 ```bash
-[user@fugg1 ~]$ sbatch  example-job.sh
-[user@fugg1 ~]$ sbatch  example-job.sh
-[user@fugg1 ~]$ sbatch  example-job.sh
+[yourUsername@login1 ~]$ sbatch  example-job.sh
+[yourUsername@login1 ~]$ sbatch  example-job.sh
+[yourUsername@login1 ~]$ sbatch  example-job.sh
 ```
 
 Then, cancel them all:
 
 ```bash
-[user@fugg1 ~]$ scancel -u user
+[yourUsername@login1 ~]$ scancel -u yourUsername
 ```
 
 :::::::::::::::::::::::::
@@ -422,11 +420,11 @@ exits. Let's demonstrate this by running the `hostname` command with
 job with `Ctrl-c`.)
 
 ```bash
-[user@fugg1 ~]$ srun hostname
+[yourUsername@login1 ~]$ srun hostname
 ```
 
 ```output
-fugg1
+smnode1
 ```
 
 `srun` accepts all of the same options as
@@ -435,7 +433,7 @@ these options are specified on the command-line when starting a job. To submit
 a job that uses 2 CPUs for instance, we could use the following command:
 
 ```bash
-[user@fugg1 ~]$ srun -n 2 echo "This job will use 2 CPUs."
+[yourUsername@login1 ~]$ srun -n 2 echo "This job will use 2 CPUs."
 ```
 
 ```output
@@ -454,7 +452,7 @@ went wrong with a previous job. Fortunately, Slurm makes it
 easy to start an interactive job with `srun`:
 
 ```bash
-[user@fugg1 ~]$ srun  --pty bash
+[yourUsername@login1 ~]$ srun  --pty bash
 ```
 
 You should be presented with a bash prompt. Note that the prompt will likely
@@ -467,7 +465,7 @@ logged on. You can also verify this with `hostname`.
 
 To see graphical output inside your jobs, you need to use X11 forwarding. To
 connect with this feature enabled, use the `-Y` option when you login with
-the `ssh` command, e.g., `ssh -Y user@fugg1.pleiades.uni-wuppertal.de`.
+the `ssh` command, e.g., `ssh -Y yourUsername@cluster.hpc-carpentry.org`.
 
 To demonstrate what happens when you create a graphics window on the remote
 node, use the `xeyes` command. A relatively adorable pair of eyes should pop

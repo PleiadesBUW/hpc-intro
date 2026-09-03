@@ -4,8 +4,6 @@ teaching: 25
 exercises: 10
 ---
 
-
-
 ::: questions
 - "What is an HPC system?"
 - "How does an HPC system work?"
@@ -86,13 +84,13 @@ single argument.
 
 Go ahead and open your terminal or graphical SSH client, then log in to the
 cluster using your username and the remote computer you can reach from the
-outside world, pleiades.uni-wuppertal.de.
+outside world, cluster.hpc-carpentry.org.
 
 ```bash
-[you@laptop:~]$ ssh user@fugg1.pleiades.uni-wuppertal.de
+[you@laptop:~]$ ssh yourUsername@cluster.hpc-carpentry.org
 ```
 
-Remember to replace `user` with your username or the one
+Remember to replace `yourUsername` with your username or the one
 supplied by the instructors. You may be asked for your password. Watch out: the
 characters you type after the password prompt are not displayed on the screen.
 Normal output will resume once you press `Enter`.
@@ -107,11 +105,11 @@ computer we are logged onto can be checked with the `hostname` command. (You
 may also notice that the current hostname is also part of our prompt!)
 
 ```bash
-[user@fugg1 ~]$ hostname
+[yourUsername@login1 ~]$ hostname
 ```
 
 ```output
-fugg1
+login1
 ```
 
 ::: challenge
@@ -129,7 +127,7 @@ differences you spot with your neighbors.
 
 ## It's a Beautiful Day in the Neighborhood
 
-The deepest layer should differ: `user` is uniquely yours.
+The deepest layer should differ: `yourUsername` is uniquely yours.
 Are there differences in the path at higher levels?
 
 If both of you have empty directories, they will look identical. If you
@@ -139,7 +137,7 @@ are you working on?
 Use `pwd` to **p**rint the **w**orking **d**irectory path:
 
 ```bash
-[user@fugg1 ~]$ pwd
+[yourUsername@login1 ~]$ pwd
 ```
 
 You can run `ls` to **l**i**s**t the directory contents, though it's
@@ -147,7 +145,7 @@ possible nothing will show up (if no files have been provided). To be sure,
 use the `-a` flag to show hidden files, too.
 
 ```bash
-[user@fugg1 ~]$ ls -a
+[yourUsername@login1 ~]$ ls -a
 ```
 
 At a minimum, this will show the current directory as `.`, and the parent
@@ -200,32 +198,15 @@ For example, we can view all of the worker nodes by running the command
 `sinfo`.
 
 ```bash
-[user@fugg1 ~]$ sinfo
+[yourUsername@login1 ~]$ sinfo
 ```
 
 
 ```output
-PARTITION AVAIL  TIMELIMIT  NODES  STATE NODELIST
-long         up 42-00:00:0     13   resv wn[21035-21043,21045-21048]
-long         up 42-00:00:0      9    mix wn[21001,21007,21010,21012,21018,21020,21022,21029-21030]
-long         up 42-00:00:0     24  alloc wn[21002-21006,21008-21009,21011,21013-21017,21019,21021,21023-21028,21034,21044,21049]
-normal*      up 4-00:00:00      1  down* wn21190
-normal*      up 4-00:00:00      1   drng wn21258
-normal*      up 4-00:00:00     14   resv wn[21035-21043,21045-21048,21101]
-normal*      up 4-00:00:00    106    mix wn[21001,21007,21010,21012,21018,21020,21022,21029-21030,21033,21051,21057-21058,21063-21064,21068,21071,21075-21076,21078-21079,21088,21094-21096,21105,21107,21119-21120,21133-21134,21138,21143-21144,21152-21153,21155-21156,21158,21161-21162,21166,21168-21170,21173,21175,21178,21180-21181,21183-21186,21188-21189,21191-21192,21195-21197,21199,21203-21206,21208-21211,21213,21216-21217,21219-21220,21222-21224,21226-21227,21229-21232,21234-21236,21238,21240,21242-21245,21247-21257,21261,21263]
-normal*      up 4-00:00:00    146  alloc wn[21002-21006,21008-21009,21011,21013-21017,21019,21021,21023-21028,21031-21032,21034,21044,21049-21050,21052-21056,21059-21062,21065-21067,21069-21070,21072-21074,21077,21080-21087,21089-21093,21097-21100,21102-21104,21106,21108-21118,21121-21132,21135-21137,21139-21142,21145-21151,21154,21157,21159-21160,21163-21165,21167,21171-21172,21174,21176-21177,21179,21182,21187,21193-21194,21198,21200-21202,21207,21212,21214-21215,21218,21221,21225,21228,21233,21237,21239,21241,21246,21259-21260,21262,21264-21268]
-short        up   12:00:00      1  down* wn21190
-short        up   12:00:00      1   drng wn21258
-short        up   12:00:00     58    mix wn[21180-21181,21183-21186,21188-21189,21191-21192,21195-21197,21199,21203-21206,21208-21211,21213,21216-21217,21219-21220,21222-21224,21226-21227,21229-21232,21234-21236,21238,21240,21242-21245,21247-21257,21261,21263]
-short        up   12:00:00     29  alloc wn[21182,21187,21193-21194,21198,21200-21202,21207,21212,21214-21215,21218,21221,21225,21228,21233,21237,21239,21241,21246,21259-21260,21262,21264-21268]
-atlas        up 4-00:00:00      1  down* wn21190
-atlas        up 4-00:00:00     14   resv wn[21035-21043,21045-21048,21101]
-atlas        up 4-00:00:00     84    mix wn[21001,21007,21010,21012,21018,21020,21022,21029-21030,21033,21051,21057-21058,21063-21064,21068,21071,21075-21076,21078-21079,21088,21094-21096,21105,21107,21119-21120,21133-21134,21138,21143-21144,21152-21153,21155-21156,21158,21161-21162,21166,21168-21170,21173,21175,21178,21180-21181,21183-21186,21188-21189,21191-21192,21195-21197,21199,21203-21206,21208-21211,21213,21216-21217,21219-21220,21222-21224,21226-21227,21229-21232]
-atlas        up 4-00:00:00    133  alloc wn[21002-21006,21008-21009,21011,21013-21017,21019,21021,21023-21028,21031-21032,21034,21044,21049-21050,21052-21056,21059-21062,21065-21067,21069-21070,21072-21074,21077,21080-21087,21089-21093,21097-21100,21102-21104,21106,21108-21118,21121-21132,21135-21137,21139-21142,21145-21151,21154,21157,21159-21160,21163-21165,21167,21171-21172,21174,21176-21177,21179,21182,21187,21193-21194,21198,21200-21202,21207,21212,21214-21215,21218,21221,21225,21228]
-gpu          up 3-00:00:00      1  drain gpu21005
-gpu          up 3-00:00:00      4    mix gpu[21001-21004]
-gpushort     up   12:00:00      1  drain gpu21005
-gpushort     up   12:00:00      4    mix gpu[21001-21004]
+PARTITION          AVAIL  TIMELIMIT  NODES  STATE NODELIST
+cpubase_bycore_b1*    up   infinite      4   idle node[1-2],smnode[1-2]
+node                  up   infinite      2   idle node[1-2]
+smnode                up   infinite      2   idle smnode[1-2]
 ```
 
 There are also specialized machines used for managing disk storage, user
@@ -258,7 +239,7 @@ Note that, if you're logged in to the remote computer cluster, you need to
 log out first. To do so, type `Ctrl+d` or `exit`:
 
 ```bash
-[user@fugg1 ~]$ exit
+[yourUsername@login1 ~]$ exit
 [you@laptop:~]$
 ```
 
@@ -301,16 +282,16 @@ Now compare the resources of your computer with those of the head node.
 :::: solution
 
 ```bash
-[you@laptop:~]$ ssh user@fugg1.pleiades.uni-wuppertal.de
-[user@fugg1 ~]$ nproc --all
-[user@fugg1 ~]$ free -m
+[you@laptop:~]$ ssh yourUsername@cluster.hpc-carpentry.org
+[yourUsername@login1 ~]$ nproc --all
+[yourUsername@login1 ~]$ free -m
 ```
 
 You can get more information about the processors using `lscpu`,
 and a lot of detail about the memory by reading the file `/proc/meminfo`:
 
 ```bash
-[user@fugg1 ~]$ less /proc/meminfo
+[yourUsername@login1 ~]$ less /proc/meminfo
 ```
 
 You can also explore the available filesystems using `df` to show **d**isk
@@ -319,7 +300,7 @@ i.e., GB instead of B. The **t**ype flag `-T` shows what kind of filesystem
 each resource is.
 
 ```bash
-[user@fugg1 ~]$ df -Th
+[yourUsername@login1 ~]$ df -Th
 ```
 ::::
 :::
@@ -349,7 +330,7 @@ where your jobs will actually run. Try running this command to see
 the name, CPUs and memory available on one of the worker nodes:
 
 ```bash
-[user@fugg1 ~]$ sinfo -o "%n %c %m" | column -t
+[yourUsername@login1 ~]$ sinfo -o "%n %c %m" | column -t
 ```
 :::
 

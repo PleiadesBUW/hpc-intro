@@ -4,8 +4,6 @@ teaching: 30
 exercises: 15
 ---
 
-
-
 ::::::::::::::::::::::::::::::::::::::: objectives
 
 - Load and use a software package.
@@ -78,63 +76,28 @@ To see available software modules, use `module avail`:
 
 
 ```bash
-[user@fugg1 ~]$ module avail | less
+[yourUsername@login1 ~]$ module avail | less
 ```
 
 ```output
-
------------------------------------- /beegfs/Tools/easybuild/meta-module ------------------------------------
-   2019b-rpath      2021a-norpath    2021a        2022a        2023a
-   2020b-norpath    2021a-rpath      2021a_AL9    2022a_AL9    2025
-
--------------------------------------- /opt/lmod/lmod/modulefiles/Core --------------------------------------
-   lmod    settarg
-
------------------ This is a list of module extensions "module --nx avail ..." to not show.
- -----------------
-    ADGofTest                         (E)     flit                          (E)
-    AICcmodavg                        (E)     flit-scm                      (E)
-    AMAPVox                           (E)     flit_core                     (E)
-    AUC                               (E)     flit_scm                      (E)
-    AlgDesign                         (E)     fma                           (E)
-    Algorithm::Dependency             (E)     fmri                          (E)
-    Algorithm::Diff                   (E)     fontBitstreamVera             (E)
-    AnyEvent                          (E)     fontLiberation                (E)
-    App::Cmd                          (E)     fontawesome                   (E)
-    App::cpanminus                    (E)     fontquiver                    (E)
-    AppConfig                         (E)     fonttools                     (E)
-    Archive::Extract                  (E)     forcats                       (E)
-    Array::Transpose                  (E)     foreach                       (E)
-    Array::Utils                      (E)     forecast                      (E)
-    Authen::NTLM                      (E)     foreign                       (E)
-    Authen::SASL                      (E)     formatR                       (E)
-    AutoLoader                        (E)     formula.tools                 (E)
-    B::COW                            (E)     fossil                        (E)
-    B::Hooks::EndOfScope              (E)     fpc                           (E)
-    B::Lint                           (E)     fpp                           (E)
-    BB                                (E)     fracdiff                      (E)
-lines 1-31
-
-    fitdistrplus                      (E)     zip                           (E)
-    flashClust                        (E)     zipfile36                     (E)
-    flexclust                         (E)     zipp                          (E)
-    flexmix                           (E)     zoo                           (E)
-    flextable                         (E)
+~~~ /cvmfs/pilot.eessi-hpc.org/2020.12/software/x86_64/amd/zen2/modules/all ~~~
+  Bazel/3.6.0-GCCcore-x.y.z              NSS/3.51-GCCcore-x.y.z
+  Bison/3.5.3-GCCcore-x.y.z              Ninja/1.10.0-GCCcore-x.y.z
+  Boost/1.72.0-gompi-2020a               OSU-Micro-Benchmarks/5.6.3-gompi-2020a
+  CGAL/4.14.3-gompi-2020a-Python-3.x.y   OpenBLAS/0.3.9-GCC-x.y.z
+  CMake/3.16.4-GCCcore-x.y.z             OpenFOAM/v2006-foss-2020a
 
 [removed most of the output here for clarity]
 
-These extensions cannot be loaded directly, use "module spider extension_name" for more information.
-
   Where:
-   E:  Extension that is provided by another module
-
-If the avail list is too long consider trying:
-
-"module --default avail" or "ml -d av" to just list the default modules.
-"module overview" or "ml ov" to display the number of modules for each name.
+   L:        Module is loaded
+   D:        Default Module
+   Aliases exist: foo/1.2.3 (1.2) means that
+             "module load foo/1.2" will load foo/1.2.3
 
 Use "module spider" to find all possible modules and extensions.
-Use "module keyword key1 key2 ..." to search for all possible modules matching any of the "keys".
+Use "module keyword key1 key2 ..." to search for all possible modules matching
+any of the "keys".
 ```
 
 Note that piping the output through `less` allows us to search within the output using the <kbd>/</kbd> key.
@@ -146,7 +109,7 @@ loaded in your environment. If you have no modules loaded, you will see a
 message telling you so.
 
 ```bash
-[user@fugg1 ~]$ module list
+[yourUsername@login1 ~]$ module list
 ```
 
 ```output
@@ -163,7 +126,7 @@ executables using directories listed in `$PATH`, similar to how Bash
 locates commands.
 
 ```bash
-[user@fugg1 ~]$ which python3
+[yourUsername@login1 ~]$ which python3
 ```
 
 
@@ -180,13 +143,13 @@ the `$PATH` environment variable.
 If we accidentally make a typo for example:
 
 ```bash
-[user@fugg1 ~]$ which pyython3
+[yourUsername@login1 ~]$ which pyython3
 ```
 
 we instead see something like:
 
 ```output
-/usr/bin/which: no pyython3 in (/common/home/user/.local/bin:/common/home/user/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin)
+/usr/bin/which: no pyython3 in (/yourUsername/.local/bin:/yourUsername/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin)
 ```
 
 This wall of text is actually a list of directories separated by the
@@ -194,8 +157,8 @@ This wall of text is actually a list of directories separated by the
 directories for `pyython3`, but could not find it:
 
 ```output
-/common/home/user/.local/bin
-/common/home/user/bin
+/yourUsername/.local/bin
+/yourUsername/bin
 /usr/local/bin
 /usr/bin
 /usr/local/sbin
@@ -212,11 +175,12 @@ We can load a different Python environment using `module load`:
 
 
 ```bash
-[user@fugg1 ~]$ module load python
-[user@fugg1 ~]$ which python3
+[yourUsername@login1 ~]$ module load Python
+[yourUsername@login1 ~]$ which python3
 ```
 
 ```output
+/cvmfs/pilot.eessi-hpc.org/2020.12/software/x86_64/amd/zen2/software/Python/3.x.y-GCCcore-x.y.z/bin/python3
 ```
 
 So, what just happened?
@@ -229,7 +193,7 @@ before reporting that the command could not be found. As with all environment
 variables, we can print it out using `echo`.
 
 ```bash
-[user@fugg1 ~]$ echo $PATH
+[yourUsername@login1 ~]$ echo $PATH
 ```
 
 ```output
@@ -245,7 +209,7 @@ executable before the system version. Let's examine what's located there:
 
 
 ```bash
-[user@fugg1 ~]$ ls /cvmfs/pilot.eessi-hpc.org/2020.12/software/x86_64/amd/zen2/software/Python/3.x.y-GCCcore-x.y.z/bin
+[yourUsername@login1 ~]$ ls /cvmfs/pilot.eessi-hpc.org/2020.12/software/x86_64/amd/zen2/software/Python/3.x.y-GCCcore-x.y.z/bin
 ```
 
 ```output
@@ -266,46 +230,72 @@ To demonstrate, let's use `module list`. `module list` shows all loaded
 software modules.
 
 ```bash
-[user@fugg1 ~]$ module list
-```
-
-```output
-No modules loaded
-```
-
-```bash
-[user@fugg1 ~]$ module load 2025 GCC/14.3.0
-[user@fugg1 ~]$ module list
+[yourUsername@login1 ~]$ module list
 ```
 
 ```output
 Currently Loaded Modules:
-  1) 2025   2) GCCcore/14.3.0   3) zlib/1.3.1   4) binutils/2.44   5) GCC/14.3.0
-
+  1) GCCcore/x.y.z                 4) GMP/6.2.0-GCCcore-x.y.z
+  2) Tcl/8.6.10-GCCcore-x.y.z      5) libffi/3.3-GCCcore-x.y.z
+  3) SQLite/3.31.1-GCCcore-x.y.z   6) Python/3.x.y-GCCcore-x.y.z
 ```
 
-So in this case, loading the `GCC/14.3.0` module (loads other dependent module such as GCCcore, zlib, bunutils and GCC).
-Let's try unloading the `GCC/14.3.0` package.
-
 ```bash
-[user@fugg1 ~]$ module unload GCC/14.3.0
-[user@fugg1 ~]$ module list
+[yourUsername@login1 ~]$ module load GROMACS
+[yourUsername@login1 ~]$ module list
 ```
 
 ```output
 Currently Loaded Modules:
-  1) 2025
+  1) GCCcore/x.y.z                    14) libfabric/1.11.0-GCCcore-x.y.z
+  2) Tcl/8.6.10-GCCcore-x.y.z         15) PMIx/3.1.5-GCCcore-x.y.z
+  3) SQLite/3.31.1-GCCcore-x.y.z      16) OpenMPI/4.0.3-GCC-x.y.z
+  4) GMP/6.2.0-GCCcore-x.y.z          17) OpenBLAS/0.3.9-GCC-x.y.z
+  5) libffi/3.3-GCCcore-x.y.z         18) gompi/2020a
+  6) Python/3.x.y-GCCcore-x.y.z       19) FFTW/3.3.8-gompi-2020a
+  7) GCC/x.y.z                        20) ScaLAPACK/2.1.0-gompi-2020a
+  8) numactl/2.0.13-GCCcore-x.y.z     21) foss/2020a
+  9) libxml2/2.9.10-GCCcore-x.y.z     22) pybind11/2.4.3-GCCcore-x.y.z-Pytho...
+ 10) libpciaccess/0.16-GCCcore-x.y.z  23) SciPy-bundle/2020.03-foss-2020a-Py...
+ 11) hwloc/2.2.0-GCCcore-x.y.z        24) networkx/2.4-foss-2020a-Python-3.8...
+ 12) libevent/2.1.11-GCCcore-x.y.z    25) GROMACS/2020.1-foss-2020a-Python-3...
+ 13) UCX/1.8.0-GCCcore-x.y.z
+```
+
+So in this case, loading the `GROMACS` module (a bioinformatics software
+package), also loaded `GMP/6.2.0-GCCcore-x.y.z` and
+`SciPy-bundle/2020.03-foss-2020a-Python-3.x.y` as well. Let's try unloading the
+`GROMACS` package.
+
+```bash
+[yourUsername@login1 ~]$ module unload GROMACS
+[yourUsername@login1 ~]$ module list
+```
+
+```output
+Currently Loaded Modules:
+  1) GCCcore/x.y.z                    13) UCX/1.8.0-GCCcore-x.y.z
+  2) Tcl/8.6.10-GCCcore-x.y.z         14) libfabric/1.11.0-GCCcore-x.y.z
+  3) SQLite/3.31.1-GCCcore-x.y.z      15) PMIx/3.1.5-GCCcore-x.y.z
+  4) GMP/6.2.0-GCCcore-x.y.z          16) OpenMPI/4.0.3-GCC-x.y.z
+  5) libffi/3.3-GCCcore-x.y.z         17) OpenBLAS/0.3.9-GCC-x.y.z
+  6) Python/3.x.y-GCCcore-x.y.z       18) gompi/2020a
+  7) GCC/x.y.z                        19) FFTW/3.3.8-gompi-2020a
+  8) numactl/2.0.13-GCCcore-x.y.z     20) ScaLAPACK/2.1.0-gompi-2020a
+  9) libxml2/2.9.10-GCCcore-x.y.z     21) foss/2020a
+ 10) libpciaccess/0.16-GCCcore-x.y.z  22) pybind11/2.4.3-GCCcore-x.y.z-Pytho...
+ 11) hwloc/2.2.0-GCCcore-x.y.z        23) SciPy-bundle/2020.03-foss-2020a-Py...
+ 12) libevent/2.1.11-GCCcore-x.y.z    24) networkx/2.4-foss-2020a-Python-3.x.y
 ```
 
 So using `module unload` "un-loads" a module, and depending on how a site is
-configured it may also unload all only specific module (in our case it unloads
-all the dependent modules).
-If we wanted to unload everything at once, we could run `module purge`
+configured it may also unload all of the dependencies (in our case it does
+not). If we wanted to unload everything at once, we could run `module purge`
 (unloads everything).
 
 ```bash
-[user@fugg1 ~]$ module purge
-[user@fugg1 ~]$ module list
+[yourUsername@login1 ~]$ module purge
+[yourUsername@login1 ~]$ module list
 ```
 
 ```output
@@ -353,63 +343,28 @@ there may be reams of output:
 
 
 ```bash
-[user@fugg1 ~]$ module avail | less
+[yourUsername@login1 ~]$ module avail | less
 ```
 
 ```output
-
------------------------------------- /beegfs/Tools/easybuild/meta-module ------------------------------------
-   2019b-rpath      2021a-norpath    2021a        2022a        2023a
-   2020b-norpath    2021a-rpath      2021a_AL9    2022a_AL9    2025
-
--------------------------------------- /opt/lmod/lmod/modulefiles/Core --------------------------------------
-   lmod    settarg
-
------------------ This is a list of module extensions "module --nx avail ..." to not show.
- -----------------
-    ADGofTest                         (E)     flit                          (E)
-    AICcmodavg                        (E)     flit-scm                      (E)
-    AMAPVox                           (E)     flit_core                     (E)
-    AUC                               (E)     flit_scm                      (E)
-    AlgDesign                         (E)     fma                           (E)
-    Algorithm::Dependency             (E)     fmri                          (E)
-    Algorithm::Diff                   (E)     fontBitstreamVera             (E)
-    AnyEvent                          (E)     fontLiberation                (E)
-    App::Cmd                          (E)     fontawesome                   (E)
-    App::cpanminus                    (E)     fontquiver                    (E)
-    AppConfig                         (E)     fonttools                     (E)
-    Archive::Extract                  (E)     forcats                       (E)
-    Array::Transpose                  (E)     foreach                       (E)
-    Array::Utils                      (E)     forecast                      (E)
-    Authen::NTLM                      (E)     foreign                       (E)
-    Authen::SASL                      (E)     formatR                       (E)
-    AutoLoader                        (E)     formula.tools                 (E)
-    B::COW                            (E)     fossil                        (E)
-    B::Hooks::EndOfScope              (E)     fpc                           (E)
-    B::Lint                           (E)     fpp                           (E)
-    BB                                (E)     fracdiff                      (E)
-lines 1-31
-
-    fitdistrplus                      (E)     zip                           (E)
-    flashClust                        (E)     zipfile36                     (E)
-    flexclust                         (E)     zipp                          (E)
-    flexmix                           (E)     zoo                           (E)
-    flextable                         (E)
+~~~ /cvmfs/pilot.eessi-hpc.org/2020.12/software/x86_64/amd/zen2/modules/all ~~~
+  Bazel/3.6.0-GCCcore-x.y.z              NSS/3.51-GCCcore-x.y.z
+  Bison/3.5.3-GCCcore-x.y.z              Ninja/1.10.0-GCCcore-x.y.z
+  Boost/1.72.0-gompi-2020a               OSU-Micro-Benchmarks/5.6.3-gompi-2020a
+  CGAL/4.14.3-gompi-2020a-Python-3.x.y   OpenBLAS/0.3.9-GCC-x.y.z
+  CMake/3.16.4-GCCcore-x.y.z             OpenFOAM/v2006-foss-2020a
 
 [removed most of the output here for clarity]
 
-These extensions cannot be loaded directly, use "module spider extension_name" for more information.
-
   Where:
-   E:  Extension that is provided by another module
-
-If the avail list is too long consider trying:
-
-"module --default avail" or "ml -d av" to just list the default modules.
-"module overview" or "ml ov" to display the number of modules for each name.
+   L:        Module is loaded
+   D:        Default Module
+   Aliases exist: foo/1.2.3 (1.2) means that
+             "module load foo/1.2" will load foo/1.2.3
 
 Use "module spider" to find all possible modules and extensions.
-Use "module keyword key1 key2 ..." to search for all possible modules matching any of the "keys".
+Use "module keyword key1 key2 ..." to search for all possible modules matching
+any of the "keys".
 ```
 
 If the software your Slurm script runs requires on a specific version
@@ -431,23 +386,23 @@ compute node).
 ## Solution
 
 ```bash
-[user@fugg1 ~]$ nano python-module.sh
-[user@fugg1 ~]$ cat python-module.sh
+[yourUsername@login1 ~]$ nano python-module.sh
+[yourUsername@login1 ~]$ cat python-module.sh
 ```
 
 ```output
 #!/bin/bash
 #SBATCH 
 
-#SBATCH -t 00:00:30
+#SBATCH --time 00:00:30
 
-module load python
+module load Python
 
 python3 --version
 ```
 
 ```bash
-[user@fugg1 ~]$ sbatch  python-module.sh
+[yourUsername@login1 ~]$ sbatch  python-module.sh
 ```
 
 :::::::::::::::::::::::::
