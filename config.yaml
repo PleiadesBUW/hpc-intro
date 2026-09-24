@@ -103,7 +103,7 @@ profiles:
 # within episodes/files/customization/.
 workbench_base_customization: HPCC_MagicCastle_slurm
 # The below overlay is planned for the future workflow release and needs to be eradicated.
-WORKBENCH_OVERLAY_CUSTOMIZATION: BUW_PLEIADES_slurm
+workbench_overlay_customization: BUW_PLEIADES_slurm
 
 # Optionally, you can then overlay this default with (a subset of) customized
 # values that more closely match your system
