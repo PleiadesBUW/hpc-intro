@@ -3,7 +3,7 @@ site: sandpaper::sandpaper_site
 ---
 
 >
-> **Note:** This page is Work-in-progess for Bergische Universität Wuppertal PLEIADES Cluster.
+> **Note:** This page is specifically for the PLEIADES cluster at Bergische Universität Wuppertal.
 >
 
 This workshop is an introduction to using high-performance computing systems
