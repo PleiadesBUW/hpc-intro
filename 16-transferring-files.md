@@ -476,10 +476,26 @@ Then go to the re-named `amdahl` source tree. Ensure that the
 appropriate Python and MPI modules are loaded, and install
 the executable using the Python `pip` installation command:
 
+
 ```bash
 [user@fugg1 ~]$ cd amdahl
-[user@fugg1 ~]$ python3 -m pip install --user .
 ```
+
+We will prepare the installation of the software with two steps:
+
+1. Start an interactive Slurm job to perform the installation on a worker node, instead of the login node. This is good practice in cases where the installation contains more CPU-hungry compilations or similar. Secondly it is good practice to perform compilations and installations on the exact hardware you intend to run later on. On PLEIADES the login nodes' hardware differs from the worker nodes!
+2. We install python dependencies in a python `venv`, to keep them contained.
+
+```bash
+[user@fugg1 ~]$ srun -n1 --cpus-per-task=4 --pty bash
+# Now on worker node!
+[user@wn21268] module load 2025 GCC/14.3.0 OpenMPI/5.0.8 Python/3.13.5
+[user@wn21268] python3 -m venv venv_amdahl
+[user@wn21268] source venv_amdahl/bin/activate
+(venv_amdahl) [user@wn21268] python3 -m pip install .
+```
+
+The `module load` and `source venv_amdahl/bin/activate` have to be repeated whenever we want to prepare a shell for the execution of `amdahl`.
 
 :::::::::::::::::::::::::::::::::::::::::  callout
 

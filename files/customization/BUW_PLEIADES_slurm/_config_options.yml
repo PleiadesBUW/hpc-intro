@@ -55,6 +55,7 @@ sched:
   comment: "#SBATCH"
   hist: "sacct -u $USER"
   hist_filter: ""
+  prompt: "[user@wn21268]"
 
 episode_order:
   - 10-hpc-intro

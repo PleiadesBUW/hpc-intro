@@ -43,7 +43,8 @@ Create a submission file, requesting one task on a single node, then launch it.
 #SBATCH -n 1
 
 # Load the computing environment we need
-module load python
+module load 2025 GCC/14.3.0 OpenMPI/5.0.8 Python/3.13.5
+source venv_amdahl/bin/activate
 
 # Execute the task
 amdahl
@@ -165,12 +166,11 @@ Let's modify the job script to request more cores and use the MPI run-time.
 #SBATCH -n 4
 
 # Load the computing environment we need
-# (mpi4py and numpy are in SciPy-bundle)
-module load python
-module load SciPy-bundle
+module load 2025 GCC/14.3.0 OpenMPI/5.0.8 Python/3.13.5
+source venv_amdahl/bin/activate
 
 # Execute the task
-mpiexec amdahl
+mpirun amdahl
 ```
 
 Then submit your job. Note that the submission command has not really changed
@@ -283,12 +283,11 @@ code gets.
 #SBATCH -n 8
 
 # Load the computing environment we need
-# (mpi4py and numpy are in SciPy-bundle)
-module load python
-module load SciPy-bundle
+module load 2025 GCC/14.3.0 OpenMPI/5.0.8 Python/3.13.5
+source venv_amdahl/bin/activate
 
 # Execute the task
-mpiexec amdahl
+mpirun amdahl
 ```
 
 Then submit your job. Note that the submission command has not really changed
