@@ -476,9 +476,8 @@ Then go to the re-named `amdahl` source tree. Ensure that the
 appropriate Python and MPI modules are loaded, and install
 the executable using the Python `pip` installation command:
 
-```bash
-`r config$remote$prompt` cd amdahl
-`r config$remote$prompt` python3 -m pip install --user .
+```{r, echo=FALSE, results='asis'}
+snippets('transfer/install.Rmd')
 ```
 
 :::::::::::::::::::::::::::::::::::::::::  callout
