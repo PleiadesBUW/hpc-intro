@@ -12,12 +12,11 @@
 `r config$sched$comment` -n 4
 
 # Load the computing environment we need
-# (mpi4py and numpy are in SciPy-bundle)
-module load `r config$remote$modules$python`
-module load SciPy-bundle
+module load 2025 GCC/14.3.0 OpenMPI/5.0.8 Python/3.13.5
+source venv_amdahl/bin/activate
 
 # Execute the task
-mpiexec amdahl
+mpirun amdahl
 ```
 
 Then submit your job. Note that the submission command has not really changed

@@ -11,7 +11,8 @@
 `r config$sched$comment` -n 1
 
 # Load the computing environment we need
-module load `r config$remote$modules$python`
+module load 2025 GCC/14.3.0 OpenMPI/5.0.8 Python/3.13.5
+source venv_amdahl/bin/activate
 
 # Execute the task
 amdahl
