@@ -916,13 +916,16 @@ executable using the Python <code>pip</code> installation command:</p>
 </h3>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" tabindex="-1" aria-label="code-block-20-1"></a><span class="ex">[user@fugg1</span> ~]$ cd amdahl</span></code></pre>
 </div>
-<p>We will prepare the installation of the software with two steps:</p>
+<p>We will prepare the installation of the software with three
+steps:</p>
 <ol style="list-style-type: decimal"><li>Start an interactive Slurm job to perform the installation on a
 worker node, instead of the login node. This is good practice in cases
 where the installation contains more CPU-hungry compilations or similar.
 Secondly it is good practice to perform compilations and installations
 on the exact hardware you intend to run later on. On PLEIADES the login
 nodes’ hardware differs from the worker nodes!</li>
+<li>We load software modules the installation depends on, i.e. a
+specific Python version and OpenMPI.</li>
 <li>We install python dependencies in a python <code>venv</code>, to
 keep them contained.</li>
 </ol><div class="codewrapper sourceCode" id="cb21">
