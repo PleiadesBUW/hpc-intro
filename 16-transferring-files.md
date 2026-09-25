@@ -481,10 +481,11 @@ the executable using the Python `pip` installation command:
 [user@fugg1 ~]$ cd amdahl
 ```
 
-We will prepare the installation of the software with two steps:
+We will prepare the installation of the software with three steps:
 
 1. Start an interactive Slurm job to perform the installation on a worker node, instead of the login node. This is good practice in cases where the installation contains more CPU-hungry compilations or similar. Secondly it is good practice to perform compilations and installations on the exact hardware you intend to run later on. On PLEIADES the login nodes' hardware differs from the worker nodes!
-2. We install python dependencies in a python `venv`, to keep them contained.
+2. We load software modules the installation depends on, i.e. a specific Python version and OpenMPI.
+3. We install python dependencies in a python `venv`, to keep them contained.
 
 ```bash
 [user@fugg1 ~]$ srun -n1 --cpus-per-task=4 --pty bash
