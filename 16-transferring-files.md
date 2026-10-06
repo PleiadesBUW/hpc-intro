@@ -267,7 +267,7 @@ mechanism.
 To *upload to* another computer, the template command is
 
 ```bash
-[you@laptop:~]$ scp local_file user@fugg1.pleiades.uni-wuppertal.de:remote_destination
+[you@laptop:~]$ scp local_file yourUsername@cluster.hpc-carpentry.org:remote_destination
 ```
 
 in which `@` and `:` are field separators and `remote_destination` is a path
@@ -286,12 +286,12 @@ for `local_file`.
 Upload the lesson material to your remote home directory like so:
 
 ```bash
-[you@laptop:~]$ scp amdahl.tar.gz user@fugg1.pleiades.uni-wuppertal.de:
+[you@laptop:~]$ scp amdahl.tar.gz yourUsername@cluster.hpc-carpentry.org:
 ```
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Why Not Download on PLEIADES Directly?
+## Why Not Download on HPC Carpentry's Cloud Cluster Directly?
 
 Most computer clusters are protected from the open internet by a *firewall*.
 For enhanced security, some are configured to allow traffic *inbound*, but
@@ -308,10 +308,10 @@ OK!
 ## Commands
 
 ```bash
-[you@laptop:~]$ ssh user@fugg1.pleiades.uni-wuppertal.de
-[user@fugg1 ~]$ wget -O amdahl.tar.gz https://github.com/hpc-carpentry/amdahl/tarball/main
+[you@laptop:~]$ ssh yourUsername@cluster.hpc-carpentry.org
+[yourUsername@login1 ~]$ wget -O amdahl.tar.gz https://github.com/hpc-carpentry/amdahl/tarball/main
 # or
-[user@fugg1 ~]$ curl -o amdahl.tar.gz -L https://github.com/hpc-carpentry/amdahl/tarball/main
+[yourUsername@login1 ~]$ curl -o amdahl.tar.gz -L https://github.com/hpc-carpentry/amdahl/tarball/main
 ```
 
 :::::::::::::::::::::::::
@@ -330,7 +330,7 @@ those, and so on, until it reaches the bottom of the directory tree rooted at
 the folder name you provided.
 
 ```bash
-[you@laptop:~]$ scp -r amdahl user@fugg1.pleiades.uni-wuppertal.de:
+[you@laptop:~]$ scp -r amdahl yourUsername@cluster.hpc-carpentry.org:
 ```
 
 :::::::::::::::::::::::::::::::::::::::::  callout
@@ -381,7 +381,7 @@ The syntax is similar to `scp`. To transfer *to* another computer with
 commonly used options:
 
 ```bash
-[you@laptop:~]$ rsync -avP amdahl.tar.gz user@fugg1.pleiades.uni-wuppertal.de:
+[you@laptop:~]$ rsync -avP amdahl.tar.gz yourUsername@cluster.hpc-carpentry.org:
 ```
 
 The options are:
@@ -395,7 +395,7 @@ The options are:
 To recursively copy a directory, we can use the same options:
 
 ```bash
-[you@laptop:~]$ rsync -avP amdahl user@fugg1.pleiades.uni-wuppertal.de:~/
+[you@laptop:~]$ rsync -avP amdahl yourUsername@cluster.hpc-carpentry.org:~/
 ```
 
 As written, this will place the local directory and its contents under your
@@ -407,7 +407,7 @@ copied directly into the destination directory.
 To download a file, we simply change the source and destination:
 
 ```bash
-[you@laptop:~]$ rsync -avP user@fugg1.pleiades.uni-wuppertal.de:amdahl ./
+[you@laptop:~]$ rsync -avP yourUsername@cluster.hpc-carpentry.org:amdahl ./
 ```
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -426,7 +426,7 @@ Say we have to connect `rsync` through port 768 instead of 22. How would we
 modify this command?
 
 ```bash
-[you@laptop:~]$ rsync amdahl.tar.gz user@fugg1.pleiades.uni-wuppertal.de:
+[you@laptop:~]$ rsync amdahl.tar.gz yourUsername@cluster.hpc-carpentry.org:
 ```
 
 *Hint:* check the `man` page or "help" for `rsync`.
@@ -440,7 +440,7 @@ modify this command?
 [you@laptop:~]$ rsync --help | grep port
      --port=PORT             specify double-colon alternate port number
 See http://rsync.samba.org/ for updates, bug reports, and answers
-[you@laptop:~]$ rsync --port=768 amdahl.tar.gz user@fugg1.pleiades.uni-wuppertal.de:
+[you@laptop:~]$ rsync --port=768 amdahl.tar.gz yourUsername@cluster.hpc-carpentry.org:
 ```
 
 (Note that this command will fail, as the correct port in this case is the
@@ -469,7 +469,7 @@ implementation.
 If you have disconnected, log back in to the cluster:
 
 ```
-[you@laptop:~]$ ssh user@fugg1.pleiades.uni-wuppertal.de
+[you@laptop:~]$ ssh yourUsername@cluster.hpc-carpentry.org
 ```
 
 Then go to the re-named `amdahl` source tree. Ensure that the
@@ -477,26 +477,11 @@ appropriate Python and MPI modules are loaded, and install
 the executable using the Python `pip` installation command:
 
 
-```bash
-[user@fugg1 ~]$ cd amdahl
+``` error
+Error:
+! Snippet not found: transfer/install.Rmd
+Paths checked: /__w/hpc-intro/hpc-intro/episodes/files/customization/HPCC_MagicCastle_slurm/snippets/transfer/install.Rmd
 ```
-
-We will prepare the installation of the software with three steps:
-
-1. Start an interactive Slurm job to perform the installation on a worker node, instead of the login node. This is good practice in cases where the installation contains more CPU-hungry compilations or similar. Secondly it is good practice to perform compilations and installations on the exact hardware you intend to run later on. On PLEIADES the login nodes' hardware differs from the worker nodes!
-2. We load software modules the installation depends on, i.e. a specific Python version and OpenMPI.
-3. We install python dependencies in a python `venv`, to keep them contained.
-
-```bash
-[user@fugg1 ~]$ srun -n1 --cpus-per-task=4 --pty bash
-# Now on worker node!
-[user@wn21268] module load 2025 GCC/14.3.0 OpenMPI/5.0.8 Python/3.13.5
-[user@wn21268] python3 -m venv venv_amdahl
-[user@wn21268] source venv_amdahl/bin/activate
-(venv_amdahl) [user@wn21268] python3 -m pip install .
-```
-
-The `module load` and `source venv_amdahl/bin/activate` have to be repeated whenever we want to prepare a shell for the execution of `amdahl`.
 
 :::::::::::::::::::::::::::::::::::::::::  callout
 
@@ -528,19 +513,19 @@ then `rsync` it to the cluster, extract, and install:
 
 ```bash
 [you@laptop:~]$ wget -O mpi4py.tar.gz https://github.com/mpi4py/mpi4py/tarball/master
-[you@laptop:~]$ scp mpi4py.tar.gz user@fugg1.pleiades.uni-wuppertal.de:
+[you@laptop:~]$ scp mpi4py.tar.gz yourUsername@cluster.hpc-carpentry.org:
 # or
-[you@laptop:~]$ rsync -avP mpi4py.tar.gz user@fugg1.pleiades.uni-wuppertal.de:
+[you@laptop:~]$ rsync -avP mpi4py.tar.gz yourUsername@cluster.hpc-carpentry.org:
 ```
 
 ```bash
-[you@laptop:~]$ ssh user@fugg1.pleiades.uni-wuppertal.de
-[user@fugg1 ~]$ tar -xvzf mpi4py.tar.gz  # extract the archive
-[user@fugg1 ~]$ mv mpi4py* mpi4py        # rename the directory
-[user@fugg1 ~]$ cd mpi4py
-[user@fugg1 ~]$ python3 -m pip install --user .
-[user@fugg1 ~]$ cd ../amdahl
-[user@fugg1 ~]$ python3 -m pip install --user .
+[you@laptop:~]$ ssh yourUsername@cluster.hpc-carpentry.org
+[yourUsername@login1 ~]$ tar -xvzf mpi4py.tar.gz  # extract the archive
+[yourUsername@login1 ~]$ mv mpi4py* mpi4py        # rename the directory
+[yourUsername@login1 ~]$ cd mpi4py
+[yourUsername@login1 ~]$ python3 -m pip install --user .
+[yourUsername@login1 ~]$ cd ../amdahl
+[yourUsername@login1 ~]$ python3 -m pip install --user .
 ```
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -562,7 +547,7 @@ To check whether this warning is a problem, use `which` to search for the
 `amdahl` program:
 
 ```bash
-[user@fugg1 ~]$ which amdahl
+[yourUsername@login1 ~]$ which amdahl
 ```
 
 If the command returns no output, displaying a new prompt, it means the file
@@ -572,15 +557,15 @@ Edit your shell configuration file as follows, then log off the cluster and
 back on again so it takes effect.
 
 ```bash
-[user@fugg1 ~]$ nano ~/.bashrc
-[user@fugg1 ~]$ tail ~/.bashrc
+[yourUsername@login1 ~]$ nano ~/.bashrc
+[yourUsername@login1 ~]$ tail ~/.bashrc
 ```
 
 ```output
 export PATH=${PATH}:${HOME}/.local/bin
 ```
 
-After logging back in to fugg1.pleiades.uni-wuppertal.de, `which` should be able to
+After logging back in to cluster.hpc-carpentry.org, `which` should be able to
 find `amdahl` without difficulties.
 If you had to load a Python module, load it again.
 
@@ -592,7 +577,7 @@ If you had to load a Python module, load it again.
 Many command-line programs include a "help" message. Try it with `amdahl`:
 
 ```bash
-[user@fugg1 ~]$ amdahl --help
+[yourUsername@login1 ~]$ amdahl --help
 ```
 
 ```output
