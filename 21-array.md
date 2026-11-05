@@ -101,11 +101,11 @@ Using `nano`, create a script called
 
 ```bash
 #!/bin/bash
-#SBATCH --partition=cpubase_bycore_b1
-#SBATCH --job-name=amdahl_defaults
+#SBATCH -p=short
+#SBATCH -J=amdahl_defaults
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
-#SBATCH --time=00:05:00
+#SBATCH -t=00:05:00
 
 echo "Run the Amdahl executable with default arguments."
 amdahl
@@ -188,12 +188,12 @@ and to direct the output of each array element to a separate file.
 
 ```bash
 #!/bin/bash
-#SBATCH --partition=cpubase_bycore_b1
-#SBATCH --job-name=amdahl-array
+#SBATCH -p=short
+#SBATCH -J=amdahl-array
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --array=1-4
-#SBATCH --time=00:05:00
+#SBATCH -t=00:05:00
 #SBATCH --output=amdahl-%A-%a
 
 # Run the Amdahl executable several times independently.

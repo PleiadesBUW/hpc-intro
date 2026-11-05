@@ -60,15 +60,15 @@ graphical front-end, such as PuTTY or MobaXterm, you will set these arguments
 before clicking "connect". From the terminal, you'll write something like
 `ssh username@hostname`, where the argument is similar to an email address:
 the `@` separates the remote username from the remote host.
-In this lesson, *yourUsername* represents the username on the remote
-system, and *cluster.hpc-carpentry.org* represents the cluster's login address
+In this lesson, *user* represents the username on the remote
+system, and *fugg1.pleiades.uni-wuppertal.de* represents the cluster's login address
 (`hostname`), which identifies the cluster's login node on the network.
 
 When logging in to a laptop, tablet, or other personal device, a username, password,
 or pattern are normally required to prevent unauthorized access. In these situations,
 the likelihood of somebody else intercepting your password is low, since logging your
 keystrokes requires a malicious exploit or physical access. For systems like
-`login1` running an SSH server, anyone on the network can attempt
+`fugg1` running an SSH server, anyone on the network can attempt
 to log in to the system. Since usernames are often public or easy to guess, your
 password is often the weakest link in the security chain. Many HPC centres disable
 password authentication for SSH and instead require or prefer public-key authentication.
@@ -333,16 +333,16 @@ See the [PuTTY documentation][putty-agent].
 
 ### Uploading Your Public Key
 
-Visit [https://mokey.cluster.hpc-carpentry.org](https://mokey.cluster.hpc-carpentry.org) to upload your SSH public key. (Remember, it's the one ending in `.pub`!)
+No SSH key upload portal is configured for this cluster. If supported, `ssh-copy-id` or `scp` can be used for registering or transferring the public key.
 
 ## Log In to the Cluster
 
 Go ahead and open your terminal or graphical SSH client, then log in to the
-cluster. Replace `yourUsername` with your username or the one
+cluster. Replace `user` with your username or the one
 supplied by the instructors.
 
 ```bash
-[you@laptop:~]$ ssh yourUsername@cluster.hpc-carpentry.org
+[you@laptop:~]$ ssh user@fugg1.pleiades.uni-wuppertal.de
 ```
 
 Depending on your cluster configuration, SSH may prompt you for either your account
@@ -362,7 +362,7 @@ on though so we will adopt the following convention:
 
 - `[you@laptop:~]$` when the command is to be entered on a terminal
   connected to your local computer
-- `[yourUsername@login1 ~]$` when the command is to be entered on a
+- `[user@fugg1 ~]$` when the command is to be entered on a
   terminal connected to the remote system
 - `$` when it really doesn't matter which system the terminal is connected to.
 
@@ -376,11 +376,11 @@ computer we are logged onto can be checked with the `hostname` command. (You
 may also notice that the current hostname is also part of our prompt!)
 
 ```bash
-[yourUsername@login1 ~]$ hostname
+[user@fugg1 ~]$ hostname
 ```
 
 ```output
-login1
+fugg1
 ```
 
 The `hostname` identifies the computer to which you are currently connected. In most HPC systems,
@@ -411,11 +411,11 @@ on a login node unless the cluster documentation explicitly permits it.
 Next, let's find out where we are by running `pwd` to **p**rint the **w**orking **d**irectory.
 
 ```bash
-[yourUsername@login1 ~]$ pwd
+[user@fugg1 ~]$ pwd
 ```
 
 ```output
-/home/yourUsername
+/home/user
 ```
 
 The output shows your current working directory on the HPC system. By default, your SSH session
@@ -423,7 +423,7 @@ begins in your home directory, where your personal files, shell configuration fi
 user-specific configurations may be stored.
 
 ```bash
-[yourUsername@login1 ~]$ ls
+[user@fugg1 ~]$ ls
 ```
 
 ```output
@@ -436,7 +436,7 @@ reserved for you on other filesystems. If they did not, your home directory may 
 empty. To double-check, include hidden files in your directory listing:
 
 ```bash
-[yourUsername@login1 ~]$ ls -a
+[user@fugg1 ~]$ ls -a
 ```
 
 ```output
@@ -469,7 +469,7 @@ the key has been registered with the authentication system used by the cluster. 
 use a conventional `~/.ssh/authorized_keys` file, you may see the registered key there.
 
 ```bash
-[yourUsername@login1 ~]$ ls ~/.ssh
+[user@fugg1 ~]$ ls ~/.ssh
 ```
 
 ```output
@@ -491,7 +491,7 @@ The contents of `~/.ssh` vary between systems and can contain additional files s
 If your HPC centre uses `~/.ssh/authorized_keys`, you can inspect the file with:
 
 ```bash
-[yourUsername@login1 ~]$ cat ~/.ssh/authorized_keys
+[user@fugg1 ~]$ cat ~/.ssh/authorized_keys
 ```
 
 Each line in `authorized_keys` contains a public key that the SSH server may accept
@@ -536,15 +536,15 @@ If the `~/.ssh` directory or `authorized_keys` file does not yet exist, `ssh-cop
 can create them as necessary.
 
 ```bash
-[you@laptop:~]$ ssh-copy-id -i ~/.ssh/id_ed25519.pub yourUsername@cluster.hpc-carpentry.org
+[you@laptop:~]$ ssh-copy-id -i ~/.ssh/id_ed25519.pub user@fugg1.pleiades.uni-wuppertal.de
 ```
 
 Some SSH servers require restrictive permissions on the `.ssh` directory and
 the `authorized_keys` file before key-based authentication is accepted.
 
 ```bash
-[yourUsername@login1 ~]$ chmod 700 ~/.ssh
-[yourUsername@login1 ~]$ chmod 640 ~/.ssh/authorized_keys
+[user@fugg1 ~]$ chmod 700 ~/.ssh
+[user@fugg1 ~]$ chmod 640 ~/.ssh/authorized_keys
 ```
 
 ::: callout
@@ -567,20 +567,20 @@ under the `.ssh` folder.
 If the `.ssh` folder was not listed on the remote cluster, then it does not yet exist: create it.
 
 ```bash
-[yourUsername@login1 ~]$ mkdir ~/.ssh
+[user@fugg1 ~]$ mkdir ~/.ssh
 ```
 
 From your local computer, transfer only the public key, whose filename ends in `.pub`,
 to your HPC home directory.
 
 ```bash
-[you@laptop:~]$ scp ~/.ssh/id_ed25519.pub yourUsername@cluster.hpc-carpentry.org:~/
+[you@laptop:~]$ scp ~/.ssh/id_ed25519.pub user@fugg1.pleiades.uni-wuppertal.de:~/
 ```
 
 List the hidden files in the directory:
 
 ```bash
-[yourUsername@login1 ~]$ ls -a
+[user@fugg1 ~]$ ls -a
 ```
 
 ```output
@@ -592,15 +592,15 @@ Now, use `cat` to print your public key, but redirect the output, appending it
 to the `authorized_keys` file:
 
 ```bash
-[yourUsername@login1 ~]$ cat ~/id_ed25519.pub >> ~/.ssh/authorized_keys
+[user@fugg1 ~]$ cat ~/id_ed25519.pub >> ~/.ssh/authorized_keys
 ```
 
 Some SSH servers require restrictive permissions on the `.ssh` directory and
 the `authorized_keys` file before key-based authentication is accepted.
 
 ```bash
-[yourUsername@login1 ~]$ chmod 700 ~/.ssh
-[yourUsername@login1 ~]$ chmod 640 ~/.ssh/authorized_keys
+[user@fugg1 ~]$ chmod 700 ~/.ssh
+[user@fugg1 ~]$ chmod 640 ~/.ssh/authorized_keys
 ```
 
 ::: callout
@@ -616,14 +616,14 @@ To verify that key-based authentication works for a new SSH session, disconnect 
 the cluster and connect again:
 
 ```bash
-[yourUsername@login1 ~]$ logout
+[user@fugg1 ~]$ logout
 ```
 
 If your private key is loaded in the SSH agent, you normally will not need to enter
 its passphrase again while that identity remains available to the agent.
 
 ```bash
-[you@laptop:~]$ ssh yourUsername@cluster.hpc-carpentry.org
+[you@laptop:~]$ ssh user@fugg1.pleiades.uni-wuppertal.de
 ```
 
 [gh-ssh]: https://docs.github.com/en/authentication/connecting-to-github-with-ssh
